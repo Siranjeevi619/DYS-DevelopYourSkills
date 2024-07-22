@@ -1,8 +1,11 @@
-import logo from "./logo.svg";
-import "./App.css";
+import AppNavigation from "./Router/AppNavigation";
 
 function App() {
-  return <></>;
+  return (
+    <>
+      <AppNavigation />
+    </>
+  );
 }
 
 export default App;
