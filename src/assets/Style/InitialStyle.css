@@ -5,13 +5,23 @@
   font-style: normal;
 }
 .text-dys{
-    color:#0AA6F0;
+    color:#0D6EFD;
 }
 
 
 .special-span{
     background-color: #A1EBFF;
-    border-bottom: 3px solid #00C9FF;
+    border-bottom: 3px solid #0744B9;
     padding: 6px;
     border-radius: 8px;
+}
+
+.linked-icon{
+    color:#0D6EFD;
+    opacity: 0.2;
+    transition: text-shadow 0.3ms ease;
+}
+.linked-icon:hover{
+    opacity: 1;
+    color:#0D6EFD;
 }

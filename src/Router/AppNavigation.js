@@ -5,6 +5,7 @@ import Home from "../Components/Home/Home";
 import Contact from "../Components/Contact/Contact";
 import About from "../Components/About/About";
 import Course from "../Components/Courses/Course";
+import Footers from "../Components/Footers/Footer";
 
 function AppNavigation() {
   return (
@@ -16,6 +17,7 @@ function AppNavigation() {
         <Route path="/About" element={<About />}></Route>
         <Route path="/Contact" element={<Contact />}></Route>
       </Routes>
+      <Footers />
     </div>
   );
 }

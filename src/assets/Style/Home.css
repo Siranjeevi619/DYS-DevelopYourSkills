@@ -1,10 +1,36 @@
 @media (max-width:425px){
-    img{
-        height: 100px;
-        width: 100px;
+    .typed-section{
+        height: 80px;
+        width: 80px;
+    }
+    .explore-page-image{
+         height: 80px;
+        width: 80px;
     }
 }
 
+@media (max-width:768px){
+    .typed-section{
+        height: 300px;
+        width: 300px;
+    }
+    .explore-page-image{
+         height: 250px;
+        width: 250px;
+    }
+}
+
+
+@media (min-width:1000px) and (max-width:2000px){
+    .typed-section{
+        height: 350px;
+        width: 350px;
+    }
+    .explore-page-image{
+        height: 300px;
+        width: 300px;
+    }
+}
 .explore-content{
     background-color: #B3E5FC;
 }

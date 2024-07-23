@@ -3,6 +3,7 @@ import Typed from "typed.js";
 import "../../assets/Style/InitialStyle.css";
 import "../../assets/Style/Home.css";
 import HTMLLogo from "../../assets/Icons/html.png";
+import studyLogo from "../../assets/Icons/study-icon.svg";
 
 function Home() {
   const el = React.useRef(null);
@@ -50,17 +51,36 @@ function Home() {
           <div className="col-md-6 order-1 order-md-2">
             <div className="mt-1">
               <div className="d-flex align-items-center justify-content-center">
-                <img src={HTMLLogo} className="img-fluid" alt="HTML-logo" />
+                <img src={HTMLLogo} className="img-fluid typed-section" alt="HTML-logo" />
               </div>
             </div>
           </div>
         </div>
       </div>
       {/* explore page content */}
-      <div className=" explore-content">
-        <div className="my-3">
+      <div className="bg-light">
+        <div className="my-lg-3 my-2">
           <div className="container">
-            <h1>hello</h1>
+            <div className="">
+              <div className="row ">
+                <div className="col-12 my-lg-5 my-2 col-md-6">
+                  <div className="d-flex justify-content-center align-items-center">
+                    <img src={studyLogo} className="img-fluid explore-page-image" />
+                  </div>
+                </div>
+                <div className="col-12 my-lg-5 my-2 col-md-6">
+                  <h1 className="display-3 fw-light ">
+                    Develop <span className="text-primary">Your</span> Skill{" "}
+                    <a className="linked-icon">
+                      <i class="bi bi-link-45deg "></i>
+                    </a>
+                  </h1>
+                  <p className="fs-4">
+                    At D<span className="text-primary">Y</span>S, we are committed to providing the best free videos for learning technical skills. Whether you're looking to advance your career, switch fields, or simply expand your knowledge, our platform is here to support you every step of the way.
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
