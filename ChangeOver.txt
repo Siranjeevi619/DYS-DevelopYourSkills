@@ -1,0 +1,2 @@
+1.navbar
+navbar brand at center of the page in smaller screens
