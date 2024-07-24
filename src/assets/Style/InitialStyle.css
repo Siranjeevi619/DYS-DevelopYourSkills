@@ -11,9 +11,10 @@
 
 .special-span{
     background-color: #A1EBFF;
-    border-bottom: 3px solid #0744B9;
-    padding: 6px;
+    border-bottom: 3px solid #00C9FF;
+    padding: 3px;
     border-radius: 8px;
+    font-weight: 500;
 }
 
 .linked-icon{
@@ -24,4 +25,13 @@
 .linked-icon:hover{
     opacity: 1;
     color:#0D6EFD;
+}
+
+.justify-text {
+            text-align: justify;
+        }
+
+.custom-hr{
+     border: 1px solid #000;  
+    margin: 20px 0;
 }

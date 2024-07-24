@@ -70,8 +70,8 @@ function Home() {
                 </div>
                 <div className="col-12 my-lg-5 my-2 col-md-6">
                   <h1 className="display-3 fw-light ">
-                    Develop <span className="text-primary">Your</span> Skill{" "}
-                    <a className="linked-icon">
+                    Develop <span className="text-primary">Your</span> Skill
+                    <a className="linked-icon ms-1 h1" href='/'>
                       <i class="bi bi-link-45deg "></i>
                     </a>
                   </h1>

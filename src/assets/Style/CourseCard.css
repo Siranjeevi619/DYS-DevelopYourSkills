@@ -1,0 +1,22 @@
+.course-card{
+    border-radius: 8px;
+}
+.course-card-img{
+    border-bottom-left-radius: none;
+    border-bottom-right-radius: none;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+/* width => 425px */
+@media (min-width:425px){
+    .course-card{
+        width: 18rem;
+    }
+}
+
+/* width:1440px */
+@media (min-width:1440px){
+    .course-card{
+        width: 22rem;
+    }
+}

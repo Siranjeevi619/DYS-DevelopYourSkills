@@ -1,5 +1,5 @@
 import React from "react";
-import DYSIcon from '../../assets/Icons/dys-white.png'
+// import DYSIcon from '../../assets/Icons/dys-white.png'
 import { NavLink } from "react-router-dom";
 import "../../assets/Style/Navbar.css";
 function Navbar() {
@@ -10,8 +10,8 @@ function Navbar() {
           <span className="navbar-toggler-icon"></span>
         </button>
         <NavLink className="navbar-brand mx-auto" to="/">
-          <img src={DYSIcon} height='50px' width='50px' className="img-fluid me-lg-2 me-2 d-md-inline d-none gap-2" />
-          <span className=" fs-4 fw-bold text-center text-white mx-auto  ">Develop Your Skills</span>
+          {/* <img src={DYSIcon} height='50px' width='50px' className="img-fluid me-lg-2 me-2 d-md-inline d-none gap-2" /> */}
+          <span className=" fs-4 fw-bold text-center text-white mx-auto  ">DYS.edu</span>
         </NavLink>
         <div className="collapse navbar-collapse fs-6" id="navbarSupportedContent">
           <ul className="navbar-nav mx-auto mb-2 mb-lg-0">

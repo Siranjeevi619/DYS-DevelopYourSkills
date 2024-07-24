@@ -1,2 +1,4 @@
 1.navbar
 navbar brand at center of the page in smaller screens
+
+2. remove initialstyle file from app.js

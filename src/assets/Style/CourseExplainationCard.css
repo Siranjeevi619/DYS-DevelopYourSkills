@@ -1,0 +1,31 @@
+/* width => 425px */
+@media (min-width:320px){
+    .course-card{
+        width: 18rem;
+    }
+}
+
+/* width:1440px */
+@media (min-width:1440px){
+    .course-card{
+        width: 20rem;
+    }
+}
+
+.align-content-start {
+  flex-wrap: wrap; 
+  gap: 0.5rem;
+}
+
+.special-span {
+  background-color: #A1EBFF;
+  border-bottom: 3px solid #00C9FF;
+  padding: 3px;
+  font-size:12px;
+  border-radius: 8px;
+  font-weight: 500;
+}
+
+.basic-span-items{
+  flex-wrap: wrap;
+}
