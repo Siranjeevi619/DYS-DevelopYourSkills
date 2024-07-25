@@ -7,7 +7,7 @@ function CourseView() {
     <div className="bg-courseview py-4">
       <div className="container">
         <div className="row">
-          <div className="col-12 col-md-8">
+          <div className="col-12 col-lg-8 col-md-7">
             <div className="justify-content-center justify-content-md-start d-flex align-items-center align-items-md-start">
               <img
                 src={codevolutionLogo}
@@ -28,10 +28,18 @@ function CourseView() {
             </div>
           </div>
           {/* Course-Explaination-card */}
-          <div className="col-md-4 col-12  my-1">
+          <div className="col-md-5 col-lg-4 col-12  my-1">
             <div className="d-flex justify-content-center align-items-center">
               <CourseExplainationCard />
             </div>
+          </div>
+        </div>
+      </div>
+      {/* outcomes */}
+      <div className="container">
+        <div className="row">
+          <div className="col-12">
+            
           </div>
         </div>
       </div>
