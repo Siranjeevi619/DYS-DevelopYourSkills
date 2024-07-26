@@ -2,3 +2,5 @@
 navbar brand at center of the page in smaller screens
 
 2. remove initialstyle file from app.js
+
+3.makes as scroll over in courseview js

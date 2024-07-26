@@ -2,6 +2,7 @@ import React from "react";
 import codevolutionLogo from "../../assets/Icons/Youtuber-icons/codevolution.png";
 import "../../assets/Style/CourseView.css";
 import CourseExplainationCard from "./helpers/CourseExplainationCard";
+import Outcomes from "./helpers/Outcomes";
 function CourseView() {
   return (
     <div className="bg-courseview py-4">
@@ -23,7 +24,7 @@ function CourseView() {
             <p className="justify-text">Use reusable components to render views where data changes over time Organize React projects to create more scalable and maintainable websites and apps Use props to pass data between components. Create dynamic and interactive web pages and apps Use forms to allow users to interact with the app. Build an application in React</p>
             <div className="my-md-4 my-3 text-center text-md-start">
               <button className="btn btn-primary">
-                view playlist <i class="bi bi-book"></i>
+                start course <i className="bi fs-6 bi-play-circle-fill"></i>
               </button>
             </div>
           </div>
@@ -38,8 +39,8 @@ function CourseView() {
       {/* outcomes */}
       <div className="container">
         <div className="row">
-          <div className="col-12">
-            
+          <div className="col-12 col-md-6">
+            <Outcomes />
           </div>
         </div>
       </div>
