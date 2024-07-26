@@ -9,11 +9,10 @@ import ViewCourses from "./Components/ViewCourse/ViewCourses";
 function App() {
   return (
     <>
-      {/* <AppNavigation />
-      <CourseCard /> */}
-      {/* <CourseView /> */}
+      {/* <CourseCard />
+      <CourseView />
       {/* <CourseExplainationCard /> */}
-      <ViewCourses />
+      {/* <ViewCourses /> */}
     </>
   );
 }
