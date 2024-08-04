@@ -10,17 +10,19 @@ import PopupModal from "./tools/PopupModal";
 import TestTool from "./tools/TestTools";
 import AboutDisplay from "./Components/About/helper/AboutDisplay";
 import Navbar from "./Components/Navbar/Navbar";
+import CourseCard from "./Components/Courses/Helpers/CourseCard";
 function App() {
   return (
     <>
-      {/* <CourseCard />
-      <CourseView />
+      <AppNavigation />
+      {/* <CourseCard /> */}
+      {/*  <CourseView /> */}
       {/* <CourseExplainationCard /> */}
       {/* <ViewCourses /> */}
       {/* <AboutDisplay /> */}
       {/* <TestTool /> */}
       {/* <PopupModal /> */}
-      <Navbar />
+      {/* <Navbar /> */}
     </>
   );
 }

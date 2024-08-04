@@ -1,9 +1,13 @@
-import React from 'react'
+import React from "react";
+import AboutDisplay from "./helper/AboutDisplay";
+import "../../assets/Style/AboutDisplay.css";
 
 function About() {
   return (
-    <div>About</div>
-  )
+    <>
+      <AboutDisplay />
+    </>
+  );
 }
 
-export default About
+export default About;

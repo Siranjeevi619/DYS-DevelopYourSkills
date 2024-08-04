@@ -1,3 +1,6 @@
+.navbar-style{
+  background-color: black;
+}
 .custom-toggler {
   border: none;
   background: transparent;
@@ -11,24 +14,7 @@
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' fill='%23333' class='bi bi-list' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M2.5 12.5A.5.5 0 0 1 3 12h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-5A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-5A.5.5 0 0 1 3 2h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z'/%3E%3C/svg%3E");
   background-size: contain;
 }
-/* Custom styles to ensure off-canvas works on all screen sizes
-.offcanvas-backdrop {
-  display: none;
-}
 
-@media (min-width: 992px) {
-  .offcanvas {
-    position: relative;
-    width: 250px;
-    border-right: 1px solid rgba(0, 0, 0, 0.1);
-  }
-
-  .offcanvas.show {
-    transform: none;
-  }
-} */
-
-/* Custom styles for the navbar-toggler button */
 .custom-toggler {
   border-color: white;
 }

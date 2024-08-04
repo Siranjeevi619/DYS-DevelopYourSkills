@@ -1,9 +1,24 @@
-import React from 'react'
+import React from "react";
+import CourseCard from "./Helpers/CourseCard";
 
 function Course() {
   return (
-    <div></div>
-  )
+    <>
+      <div className="container">
+        <div className="row">
+          <CourseCard />
+          <CourseCard />
+          <CourseCard />
+          <CourseCard />
+          <CourseCard />
+          <CourseCard />
+          <CourseCard />
+          <CourseCard />
+          <CourseCard />
+        </div>
+      </div>
+    </>
+  );
 }
 
-export default Course
+export default Course;

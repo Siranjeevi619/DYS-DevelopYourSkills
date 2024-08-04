@@ -9,7 +9,7 @@ function Navbar() {
 
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+      <nav className="navbar navbar-expand-lg navbar-dark navbar-style">
         <div className="container">
           <NavLink className="navbar-brand mx-auto" to="/">
             <span className="fs-4 fw-bold text-center text-white mx-auto">DYS.edu</span>
@@ -20,7 +20,7 @@ function Navbar() {
           <div className="collapse navbar-collapse fs-6 d-none d-lg-block" id="navbarSupportedContent">
             <ul className="navbar-nav mx-auto mb-2 mb-lg-0">
               <li className="nav-item mx-lg-2">
-                <NavLink className="nav-link active footershref text-white" aria-current="page" to="/">
+                <NavLink className="nav-link  footershref text-white" aria-current="page" to="/">
                   Home
                 </NavLink>
               </li>
@@ -30,13 +30,13 @@ function Navbar() {
                 </NavLink>
               </li>
               <li className="nav-item mx-lg-2 footershref">
-                <NavLink className="nav-link" to="/Contact">
-                  Contact
+                <NavLink className="nav-link" to="/About">
+                  About
                 </NavLink>
               </li>
               <li className="nav-item mx-lg-2 footershref">
-                <NavLink className="nav-link" to="/About">
-                  About
+                <NavLink className="nav-link" to="/Contact">
+                  Contact
                 </NavLink>
               </li>
             </ul>
@@ -64,13 +64,13 @@ function Navbar() {
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/Contact" data-bs-dismiss="offcanvas">
-                Contact
+              <NavLink className="nav-link" to="/About" data-bs-dismiss="offcanvas">
+                About
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/About" data-bs-dismiss="offcanvas">
-                About
+              <NavLink className="nav-link" to="/Contact" data-bs-dismiss="offcanvas">
+                Contact
               </NavLink>
             </li>
           </ul>
