@@ -6,6 +6,10 @@ import "../src/assets/Style/InitialStyle.css";
 
 import CourseExplainationCard from "./Components/CourseView/helpers/CourseExplainationCard";
 import ViewCourses from "./Components/ViewCourse/ViewCourses";
+import PopupModal from "./tools/PopupModal";
+import TestTool from "./tools/TestTools";
+import AboutDisplay from "./Components/About/helper/AboutDisplay";
+import Navbar from "./Components/Navbar/Navbar";
 function App() {
   return (
     <>
@@ -13,6 +17,10 @@ function App() {
       <CourseView />
       {/* <CourseExplainationCard /> */}
       {/* <ViewCourses /> */}
+      {/* <AboutDisplay /> */}
+      {/* <TestTool /> */}
+      {/* <PopupModal /> */}
+      <Navbar />
     </>
   );
 }

@@ -41,36 +41,12 @@ function Outcomes() {
       <div className="tab-content" id="pills-tabContent">
         <div className="tab-pane fade show active" id="pills-video" role="tabpanel" aria-labelledby="pills-video-tab">
           <h1>video</h1>
-          {/* <h1>title</h1>
-          {post ? (
-            post.map((post) => {
-              return <li key={post.id}>{post.title}</li>;
-            })
-          ) : (
-            <p>Loading...</p>
-          )} */}
         </div>
         <div className="tab-pane fade" id="pills-outcome" role="tabpanel" aria-labelledby="pills-outcome-tab">
           <h1>outcomes</h1>
-          {/* <h2>UserID</h2>
-          {post ? (
-            post.map((post) => {
-              return <li key={post.id}>{post.userId}</li>;
-            })
-          ) : (
-            <p>Loading...</p>
-          )} */}
         </div>
         <div className="tab-pane fade" id="pills-documentation" role="tabpanel" aria-labelledby="pills-documentation-tab">
           <h1>Docs</h1>
-
-          {/* {post ? (
-            post.map((post) => {
-              return <li key={post.id}>{post.body}</li>;
-            })
-          ) : (
-            <p>Loading...</p>
-          )} */}
         </div>
         <div className="tab-pane fade" id="pills-certification" role="tabpanel" aria-labelledby="pills-certification-tab">
           <h1>certify</h1>
