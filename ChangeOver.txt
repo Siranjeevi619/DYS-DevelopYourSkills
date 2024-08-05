@@ -4,3 +4,7 @@ navbar brand at center of the page in smaller screens
 2. remove initialstyle file from app.js
 
 3.makes as scroll over in courseview js
+
+4. change the font size on home page
+
+5. change the toast

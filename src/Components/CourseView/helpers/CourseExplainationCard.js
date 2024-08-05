@@ -3,7 +3,7 @@ import "../../../assets/Style/CourseExplainationCard.css";
 
 function CourseExplainationCard() {
   return (
-    <div className="">
+    <div className="my-md-4 my-3">
       <div className="card shadow p-2 course-card">
         <div className="card-body">
           <h4 className="card-title">Course</h4>

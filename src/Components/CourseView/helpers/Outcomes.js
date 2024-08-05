@@ -1,22 +1,9 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-
+import React from "react";
+import "../../../assets/Style/OutComes.css";
 function Outcomes() {
-  const [post, setPost] = useState(null);
-  useEffect(() => {
-    axios
-      .get("https://jsonplaceholder.typicode.com/posts")
-      .then((Response) => {
-        setPost(Response.data);
-        console.log("data fetched");
-      })
-      .catch((error) => {
-        console.log(error.message);
-      });
-  }, []);
   return (
-    <>
-      <ul className="nav nav-pills mb-3 gap-5" id="pills-tab" role="tablist">
+    <div className="container">
+      <ul className="nav nav-pills mb-3 justify-content-md-start justify-content-center gap-2" id="pills-tab" role="tablist">
         <li className="nav-item" role="presentation">
           <button className="nav-link active" id="pills-video-tab" data-bs-toggle="pill" data-bs-target="#pills-video" type="button" role="tab" aria-controls="pills-video" aria-selected="true">
             Video
@@ -28,7 +15,7 @@ function Outcomes() {
           </button>
         </li>
         <li className="nav-item" role="presentation">
-          <button className="nav-link " id="pills-documentation-tab" data-bs-toggle="pill" data-bs-target="#pills-documentation" type="button" role="tab" aria-controls="pills-documentation" aria-selected="false">
+          <button className="nav-link" id="pills-documentation-tab" data-bs-toggle="pill" data-bs-target="#pills-documentation" type="button" role="tab" aria-controls="pills-documentation" aria-selected="false">
             Docs
           </button>
         </li>
@@ -52,7 +39,7 @@ function Outcomes() {
           <h1>certify</h1>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

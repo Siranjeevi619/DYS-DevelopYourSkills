@@ -6,9 +6,9 @@ import Outcomes from "./helpers/Outcomes";
 import { useNavigate } from "react-router";
 function CourseView() {
   const navigate = useNavigate();
-  const handleViewCourse =() =>{
+  const handleViewCourse = () => {
     navigate("/view-course");
-  }
+  };
   return (
     <div className="bg-courseview py-4">
       <div className="container">
@@ -34,8 +34,6 @@ function CourseView() {
             </div>
           </div>
 
-
-
           {/* Course-Explaination-card */}
           <div className="col-md-5 col-lg-4 col-12  my-1">
             <div className="d-flex justify-content-center align-items-center">
@@ -45,15 +43,9 @@ function CourseView() {
         </div>
       </div>
 
-
-
       {/* outcomes */}
       <div className="container">
-        <div className="row">
-          <div className="col-12 col-md-6">
-            <Outcomes />
-          </div>
-        </div>
+        <Outcomes />
       </div>
     </div>
   );

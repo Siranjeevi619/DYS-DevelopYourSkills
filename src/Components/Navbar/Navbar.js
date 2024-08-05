@@ -1,8 +1,21 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import "../../assets/Style/Navbar.css";
 
 function Navbar() {
+  const Navigate = useNavigate();
+  const handleCoursePage = () => {
+    Navigate("/Course");
+  };
+  const handleHomePage = () => {
+    Navigate("/");
+  };
+  const handleAboutPage = () => {
+    Navigate("/About");
+  };
+  const handleContactPage = () => {
+    Navigate("/Contact");
+  };
   const handleBlur = (event) => {
     event.target.blur();
   };
@@ -20,7 +33,7 @@ function Navbar() {
           <div className="collapse navbar-collapse fs-6 d-none d-lg-block" id="navbarSupportedContent">
             <ul className="navbar-nav mx-auto mb-2 mb-lg-0">
               <li className="nav-item mx-lg-2">
-                <NavLink className="nav-link  footershref text-white" aria-current="page" to="/">
+                <NavLink exact className="nav-link  footershref text-white" aria-current="page" to="/">
                   Home
                 </NavLink>
               </li>
@@ -53,22 +66,22 @@ function Navbar() {
         </div>
         <div className="offcanvas-body">
           <ul className="navbar-nav">
-            <li className="nav-item">
+            <li className="nav-item" onClick={handleHomePage}>
               <NavLink className="nav-link" aria-current="page" to="/" data-bs-dismiss="offcanvas">
                 Home
               </NavLink>
             </li>
-            <li className="nav-item">
+            <li className="nav-item" onClick={handleCoursePage}>
               <NavLink className="nav-link" to="/Course" data-bs-dismiss="offcanvas">
                 Courses
               </NavLink>
             </li>
-            <li className="nav-item">
+            <li className="nav-item" onClick={handleAboutPage}>
               <NavLink className="nav-link" to="/About" data-bs-dismiss="offcanvas">
                 About
               </NavLink>
             </li>
-            <li className="nav-item">
+            <li className="nav-item" onClick={handleContactPage}>
               <NavLink className="nav-link" to="/Contact" data-bs-dismiss="offcanvas">
                 Contact
               </NavLink>
