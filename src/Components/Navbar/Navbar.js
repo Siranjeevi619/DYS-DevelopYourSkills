@@ -33,7 +33,7 @@ function Navbar() {
           <div className="collapse navbar-collapse fs-6 d-none d-lg-block" id="navbarSupportedContent">
             <ul className="navbar-nav mx-auto mb-2 mb-lg-0">
               <li className="nav-item mx-lg-2">
-                <NavLink exact className="nav-link  footershref text-white" aria-current="page" to="/">
+                <NavLink  className="nav-link  footershref text-white" aria-current="page" to="/">
                   Home
                 </NavLink>
               </li>

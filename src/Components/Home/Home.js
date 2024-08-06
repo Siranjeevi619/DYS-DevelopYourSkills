@@ -4,10 +4,17 @@ import "../../assets/Style/InitialStyle.css";
 import "../../assets/Style/Home.css";
 import HTMLLogo from "../../assets/Icons/html.png";
 import studyLogo from "../../assets/Icons/study-icon.svg";
+import { useNavigate } from "react-router";
 
 function Home() {
   const el = React.useRef(null);
-
+  const Navigate = useNavigate();
+  const handleCoursePage = () => {
+    Navigate("/Course");
+  };
+  const handleAboutPage = () => {
+    Navigate("/About");
+  };
   React.useEffect(() => {
     const typed = new Typed(el.current, {
       strings: ["yourself", "Tech skill", "your skill"],
@@ -39,10 +46,10 @@ function Home() {
             </div>
             <div className="my-4">
               <div className="d-flex justify-content-center justify-content-md-start align-items-center align-items-md-start">
-                <button className="btn btn-primary ">
+                <button className="btn btn-primary " onClick={handleCoursePage}>
                   view course <i className="bi bi-book"></i>
                 </button>
-                <button className="btn  btn-outline-primary ms-3">
+                <button className="btn  btn-outline-primary ms-3" onClick={handleAboutPage}>
                   Explore <i className="bi bi-globe-americas"></i>
                 </button>
               </div>
@@ -57,6 +64,7 @@ function Home() {
           </div>
         </div>
       </div>
+
       {/* explore page content */}
       <div className="bg-light">
         <div className="my-lg-3 my-2">
@@ -71,8 +79,8 @@ function Home() {
                 <div className="col-12 my-lg-5 my-2 col-md-6">
                   <h1 className="display-3 fw-light ">
                     Develop <span className="text-primary">Your</span> Skill
-                    <a className="linked-icon ms-1 h1" href='/'>
-                      <i class="bi bi-link-45deg "></i>
+                    <a className="linked-icon ms-1 h1" href="/">
+                      <i className="bi bi-link-45deg "></i>
                     </a>
                   </h1>
                   <p className="fs-4">

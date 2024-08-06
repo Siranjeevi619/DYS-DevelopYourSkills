@@ -35,7 +35,7 @@ function ViewCourses() {
             <h4>codevolution</h4>
             <div className="justify-content-end d-flex ms-auto">
               <button className="btn btn-primary btn-sm" onClick={() => notifySuccess("Thank You")}>
-                <a data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Default tooltip">
+                <a href="/" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Default tooltip">
                   <i className="bi bi-hand-thumbs-up"></i>
                 </a>
               </button>
