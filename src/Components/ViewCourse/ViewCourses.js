@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import "../../assets/Style/ViewCourses.css";
 import codevolution from "../../assets/Icons/Youtuber-icons/codevolution.png";
 import PlaylistVideo from "./helpers/PlaylistVideo";
-import { notifySuccess } from "../../tools/ToastModal";
-import ToastModal from "../../tools/ToastModal";
 function ViewCourses() {
   const [notes, setNotes] = useState("");
 
@@ -24,7 +22,7 @@ function ViewCourses() {
   return (
     <div className="container">
       <div className="row py-md-5 py-4">
-        <ToastModal />
+    
         <div className="col-12 col-md-7">
           <div className="responsive-iframe-container">
             <iframe src="https://www.youtube.com/embed/yA1saJp0c30?si=fxKHV6GL7CndEJ3j" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
@@ -34,7 +32,7 @@ function ViewCourses() {
             <img src={codevolution} className="rounded-circle img-fluid" alt="youtuber-icon" />
             <h4>codevolution</h4>
             <div className="justify-content-end d-flex ms-auto">
-              <button className="btn btn-primary btn-sm" onClick={() => notifySuccess("Thank You")}>
+              <button className="btn btn-primary btn-sm">
                 <a href="/" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Default tooltip">
                   <i className="bi bi-hand-thumbs-up"></i>
                 </a>

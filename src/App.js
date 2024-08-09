@@ -8,8 +8,8 @@ function App() {
   return (
     <>
       {/* <SearchBar  /> */}
-      {/* <AppNavigation /> */}
-      <Contact />
+      <AppNavigation />
+      {/* <Contact /> */}
       {/* <CourseCard /> */}
       {/*  <CourseView /> */}
       {/* <CourseExplainationCard /> */}
