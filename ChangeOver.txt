@@ -8,3 +8,5 @@ navbar brand at center of the page in smaller screens
 4. change the font size on home page
 
 5. change the toast
+
+6. change card size

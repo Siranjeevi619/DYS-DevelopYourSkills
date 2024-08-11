@@ -7,16 +7,21 @@
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
 }
-/* width => 425px */
-@media (min-width:425px){
+
+@media (min-width:320px){
     .course-card{
         width: 18rem;
     }
 }
 
-/* width:1440px */
-@media (min-width:1440px){
+
+@media (min-width:999px){
     .course-card{
-        width: 18rem;
+        width: 30rem;
+    }
+}
+@media (min-width:1400px){
+    .course-card{
+        width: 30rem;
     }
 }

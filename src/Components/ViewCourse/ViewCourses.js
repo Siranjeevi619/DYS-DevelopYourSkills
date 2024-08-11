@@ -32,7 +32,7 @@ function ViewCourses() {
             <img src={codevolution} className="rounded-circle img-fluid" alt="youtuber-icon" />
             <h4>codevolution</h4>
             <div className="justify-content-end d-flex ms-auto">
-              <button className="btn btn-primary btn-sm">
+              <button className="btn border shadow text-white btn-sm">
                 <a href="/" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Default tooltip">
                   <i className="bi bi-hand-thumbs-up"></i>
                 </a>

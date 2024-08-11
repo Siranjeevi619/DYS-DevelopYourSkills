@@ -3,12 +3,16 @@ import React from "react";
 import "../src/assets/Style/InitialStyle.css";
 import SearchBar from "./Components/Courses/Helpers/SearchBar";
 import Contact from "./Components/Contact/Contact";
+import CarsoualEffect from "./Components/Home/helpers/CarsoualEffect";
+import CourseSlider from "./Components/Home/helpers/CourseSlider";
 
 function App() {
   return (
     <>
       {/* <SearchBar  /> */}
       <AppNavigation />
+      {/* <CourseSlider /> */}
+      {/* <CarsoualEffect /> */}
       {/* <Contact /> */}
       {/* <CourseCard /> */}
       {/*  <CourseView /> */}

@@ -5,7 +5,8 @@ import "../../assets/Style/Home.css";
 import HTMLLogo from "../../assets/Icons/html.png";
 import studyLogo from "../../assets/Icons/study-icon.svg";
 import { useNavigate } from "react-router";
-
+import CarouselEffectPassCard from "./helpers/CarsoualEffectPassCard";
+import CourseSlider from "./helpers/CourseSlider";
 function Home() {
   const el = React.useRef(null);
   const Navigate = useNavigate();
@@ -41,7 +42,7 @@ function Home() {
                 Knowledge is <span className="text-dys">Power</span>
               </h3>
               <div className="my-3 ">
-                <p className="fs-4 text-center text-md-start ">Welcome To our website, Education is the most powerful weapon which you can use to change the world, Education is the passport to the future, for tomorrow belongs to those who prepare for it today</p>
+                <p className="fs-4 justify-text ">Education is the cornerstone of personal and societal growth, opening doors to opportunities and fostering critical thinking. It empowers individuals to explore new ideas, solve complex problems, and contribute meaningfully to their communities. Through education, we gain the knowledge and skills necessary to navigate an ever-changing world. Lifelong learning ensures that we continue to grow and adapt, staying curious and engaged. In essence, education is a lifelong journey that shapes our minds and future.</p>
               </div>
             </div>
             <div className="my-4">
@@ -57,13 +58,15 @@ function Home() {
           </div>
           <div className="col-md-6 order-1 order-md-2">
             <div className="mt-1">
-              <div className="d-flex align-items-center justify-content-center">
-                <img src={HTMLLogo} className="img-fluid typed-section" alt="HTML-logo" />
-              </div>
+              <CarouselEffectPassCard />
             </div>
           </div>
         </div>
       </div>
+
+      {/* learn courses display */}
+      
+      <CourseSlider />
 
       {/* explore page content */}
       <div className="bg-light">

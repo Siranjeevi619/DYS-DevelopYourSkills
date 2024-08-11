@@ -1,0 +1,75 @@
+/* .container {
+    max-width: 1200px;
+    margin: auto;
+    overflow: hidden;
+    position: relative;
+}
+
+.slider-container {
+    display: flex;
+    width: 200%;
+    gap:20px;
+    animation: scroll 15s linear infinite;
+}
+
+.slide {
+    min-width: 12.5%; 
+    box-sizing: border-box;
+}
+
+@media (min-width:320px) {
+    .course-logo {
+        width: 100%;
+        height: auto;
+    }
+} */
+@media (min-width:768px) {
+    .course-logo {
+        width:100px;
+        height: 100px;
+    }
+    .slider-container{
+        gap:1px;
+    }
+}
+
+/* @keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+} */ */
+
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    overflow: hidden;
+    position: relative;
+}
+
+.slider-container {
+    display: flex;
+    animation: scroll 15s linear infinite; /* Animation for scrolling */
+}
+
+.slide {
+    min-width: 12.5%; /* Adjust based on how many items you want visible */
+    box-sizing: border-box;
+}
+
+.course-logo {
+    width: 100%;
+    height: auto;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%); /* Change based on the number of items */
+    }
+}
