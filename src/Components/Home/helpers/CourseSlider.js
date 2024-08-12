@@ -24,7 +24,11 @@ function CourseSlider() {
   const repeatedLogos = [...CoursesSlidingLogo, ...CoursesSlidingLogo];
 
   return (
-    <div className="container">
+  
+      <div className='col-12'>
+      <h4 className='text-center my-4'>
+        Learn Anything at Anywhere with <span>D<span className='text-dys'>Y</span>S</span>
+      </h4>
       <div className="slider-container">
         {repeatedLogos.map((logo, index) => (
           <div className="slide" key={index}>
@@ -32,7 +36,8 @@ function CourseSlider() {
           </div>
         ))}
       </div>
-    </div>
+      </div>
+    
   );
 }
 

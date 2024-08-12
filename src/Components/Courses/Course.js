@@ -13,10 +13,12 @@ function Course() {
           <CourseCard />
           <CourseCard />
           <CourseCard />
+          <CourseCard />          <CourseCard />
+          <CourseCard />    
           <CourseCard />
+          <CourseCard />          <CourseCard />
           <CourseCard />
-          <CourseCard />
-          <CourseCard />
+
         </div>
       </div>
     </>

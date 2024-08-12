@@ -29,7 +29,7 @@
         height: 100px;
     }
     .slider-container{
-        gap:1px;
+        gap:30px;
     }
 }
 
@@ -52,11 +52,11 @@
 
 .slider-container {
     display: flex;
-    animation: scroll 15s linear infinite; /* Animation for scrolling */
+    animation: scroll 30s linear infinite; 
 }
 
 .slide {
-    min-width: 12.5%; /* Adjust based on how many items you want visible */
+    min-width: 12.5%; 
     box-sizing: border-box;
 }
 

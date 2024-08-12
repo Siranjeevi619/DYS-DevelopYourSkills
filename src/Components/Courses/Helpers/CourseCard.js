@@ -1,6 +1,6 @@
 import React from "react";
 import reactImage from "../../../assets/images/Course-img/React-image.png";
-import "../../../assets/Style/CourseCard.css";
+import "../../../assets/Style/CarsoualCard.css";
 import {  useNavigate } from "react-router";
 
 function CourseCard() {
@@ -9,7 +9,7 @@ function CourseCard() {
     navigate("/course-view");
   };
   return (
-    <div className="col-12 col-md-4 my-md-4 my-2 col-lg-3 col-xl-3 col-xxl-4">
+    <div className="col-12 col-md-3 my-md-4 my-2 col-lg-3 col-xl-3 col-xxl-4">
       <div className="d-flex justify-content-center align-items-center">
         <div className="card shadow  course-card">
           <img src={reactImage} className="card-img-top course-card-img h-auto" alt="reactImage" />

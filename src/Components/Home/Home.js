@@ -32,7 +32,7 @@ function Home() {
         <div className="my-3 my-lg-5"></div>
         {/* TypedJS section */}
         <div className="row">
-          <div className="col-12 col-md-6 order-md-1 order-2">
+          <div className="col-12 col-lg-6 order-lg-1 order-2">
             <h1 className="text-center display-1 text-md-start">
               <span className="fw-light ">Develop </span>
               <span ref={el} className="text-dys" />
@@ -56,8 +56,8 @@ function Home() {
               </div>
             </div>
           </div>
-          <div className="col-md-6 order-1 order-md-2">
-            <div className="mt-1">
+          <div className="col-lg-6 order-1 order-lg-2">
+            <div className="my-md-5 my-3">
               <CarouselEffectPassCard />
             </div>
           </div>
@@ -66,7 +66,11 @@ function Home() {
 
       {/* learn courses display */}
       
+     {/* <div className="my-md-5 my-3">
+      <div className="container">
       <CourseSlider />
+      </div>
+     </div> */}
 
       {/* explore page content */}
       <div className="bg-light">

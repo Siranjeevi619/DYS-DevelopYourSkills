@@ -1,27 +1,18 @@
-.course-card{
+.course-card {
     border-radius: 8px;
+    width: 30rem;
 }
-.course-card-img{
+
+
+.course-card-img {
     border-bottom-left-radius: none;
     border-bottom-right-radius: none;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
 }
 
-@media (min-width:320px){
-    .course-card{
+@media (max-width: 768px) {
+    .course-card {
         width: 18rem;
-    }
-}
-
-
-@media (min-width:999px){
-    .course-card{
-        width: 30rem;
-    }
-}
-@media (min-width:1400px){
-    .course-card{
-        width: 30rem;
     }
 }

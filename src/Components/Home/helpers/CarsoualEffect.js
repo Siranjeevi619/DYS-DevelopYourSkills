@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import CarsoualCard from './CarsoualCard';  // Adjust the path as needed
+import CarsoualCard from './CarsoualCard';
 
 function CarouselEffect({ cards }) {
   return (
