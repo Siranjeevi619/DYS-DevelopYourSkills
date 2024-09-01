@@ -11,10 +11,10 @@ import Developers from "./Components/Contact/helpers/Developers";
 function App() {
   return (
     <>
-      <Developers />
-      <DeveloperDisplay />
+      {/* <Developers /> */}
+      {/* <DeveloperDisplay /> */}
       {/* <SearchBar  /> */}
-      {/* <AppNavigation />  */}
+      <AppNavigation /> 
       {/* <CourseSlider /> */}
       {/* <CarsoualEffect /> */}
       {/* <Contact /> */}

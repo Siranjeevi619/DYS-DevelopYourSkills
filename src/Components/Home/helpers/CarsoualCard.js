@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import '../../../assets/Style/CarsoualCard.css';
 import { useNavigate } from 'react-router';
-import ReactThumbnail from '../../../assets/images/Course-img/React-image.png';
+import ReactThumbnail from '../../../assets/images/Course-img/ReactBasics.png';
 
 function CourseCard({ title, author, image }) {
   const navigate = useNavigate();

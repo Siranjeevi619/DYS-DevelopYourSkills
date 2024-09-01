@@ -1,6 +1,6 @@
-import React from 'react'
+import React from "react";
 import "../../../assets/Style/PlaylistVideo.css";
-import reactPlaylistThumbnail from '../../../assets/images/Course-img/React-image.png'
+import reactPlaylistThumbnail from "../../../assets/images/Course-img/ReactBasics.png";
 import "../../../assets/Style/PlaylistVideo.css";
 
 const PlaylistVideo = () => {
@@ -18,4 +18,3 @@ const PlaylistVideo = () => {
 };
 
 export default PlaylistVideo;
-
