@@ -1,9 +1,31 @@
-import req from "express/lib/request";
-import { type } from "express/lib/response";
-import { ReturnDocument } from "mongodb";
 import mongoose, { Model, Schema } from "mongoose";
+import { v4 as uuidv4 } from "uuid";
+// courseId, courseName, courseDescripition, courseTutor, courseLanguage, courseDuration, courseTags, courseTutorIcons, courseThumbnail,
+//courseThumbnail ,courseDocs , courseOutcome, coursePlayList,courseCertify
+
+const Playlist = new mongoose.Schema({
+  title: {
+    type: String,
+    required: true,
+    minlength: 1,
+    maxlength: 255,
+  },
+  videoUrls: [
+    {
+      type: String,
+      required: true,
+      match: /https?:\/\/(www\.)?youtube\.com\/watch\?v=[\w-]+/,
+    },
+  ],
+});
 
 const courseSchema = new mongoose.Schema({
+  courseId: {
+    type: String,
+    require: true,
+    unique: true,
+    default: uuidv4,
+  },
   courseName: {
     require: true,
     unique: true,
@@ -64,11 +86,8 @@ const courseSchema = new mongoose.Schema({
       require: true,
     },
   ],
-  coursePlayList: [
-    {
-      type: String,
-      required: true,
-      match: /https?:\/\/(www\.)?youtube\.com\/watch\?v=[\w-]+/,
-    },
-  ],
+  coursePlayList: [Playlist],
 });
+
+const courseModel = mongoose.model("course", courseSchema);
+export default courseModel;

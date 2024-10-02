@@ -2,6 +2,7 @@
   "name": "dys-backend-server",
   "version": "1.0.0",
   "description": "develop an e-learning portal",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -26,6 +27,7 @@
     "express": "^4.21.0",
     "mongodb": "^6.9.0",
     "mongoose": "^8.7.0",
-    "multer": "^1.4.5-lts.1"
+    "multer": "^1.4.5-lts.1",
+    "uuid": "^10.0.0"
   }
 }
