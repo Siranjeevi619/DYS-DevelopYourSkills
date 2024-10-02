@@ -1,0 +1,31 @@
+{
+  "name": "dys-backend-server",
+  "version": "1.0.0",
+  "description": "develop an e-learning portal",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "run": "nodemon index.js",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Siranjeevi619/DYS-DevelopYourSkills.git"
+  },
+  "keywords": [
+    "dys"
+  ],
+  "author": "steve",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Siranjeevi619/DYS-DevelopYourSkills/issues"
+  },
+  "homepage": "https://github.com/Siranjeevi619/DYS-DevelopYourSkills#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.0",
+    "mongodb": "^6.9.0",
+    "mongoose": "^8.7.0",
+    "multer": "^1.4.5-lts.1"
+  }
+}
