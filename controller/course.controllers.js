@@ -44,6 +44,46 @@ export const addCourse = async (req, res) => {
   }
 };
 
+export const updateCourse = async (req, res) => {
+  try {
+    const courseToUpdate = req.body.courseId;
+    console.log(courseToUpdate);
+    console.log(courseToUpdate);
+    if (!courseToUpdate) {
+      return res.status(400).json({ message: "courseId is required" });
+    }
+    const updatedCourse = await courseModel.findOneAndUpdate(
+      { courseId: courseToUpdate },
+      {
+        courseName: req.body.courseName,
+        courseDescription: req.body.courseDescription,
+        courseTutor: req.body.courseTutor,
+        courseLanguage: req.body.courseLanguage,
+        courseDuration: req.body.courseDuration,
+        courseTags: req.body.courseTags,
+        courseTutorIcon: req.body.courseTutor,
+        courseThumbnail: req.body.courseThumbnail,
+        courseDocs: req.body.courseDocs,
+        courseOutcome: req.body.courseOutcome,
+        courseCertify: req.body.courseCertify,
+        coursePlayList: req.body.coursePlayList,
+      },
+      {
+        new: true,
+      }
+    );
+    if (!updatedCourse) {
+      return res.status(404).json({ message: "cannot update course" });
+    }
+
+    return res
+      .status(200)
+      .json({ message: "course updated successfully", updatedCourse });
+  } catch (e) {
+    return res.status(500).json({ message: e.message });
+  }
+};
+
 export const readCourse = async (req, res) => {
   try {
     const readCourse = await courseModel.find();
@@ -55,6 +95,49 @@ export const readCourse = async (req, res) => {
     }
     return res.status(200).json({ readCourse });
   } catch (e) {
+    return res.status(500).json({ message: e.message });
+  }
+};
+
+export const deleteCourse = async (req, res) => {
+  try {
+    const courseToDelete = req.body.courseId;
+    if (!courseToDelete) {
+      return res.status(404).json({ message: "the course cannot be found" });
+    }
+    const deleteCourse = await courseModel.findOneAndDelete(courseToDelete);
+    if (!deleteCourse) {
+      return res.status(400).json({ message: "connection in error " });
+    }
+    return res.status(200).json({ message: "course removed successfully" });
+  } catch (e) {
+    return res.status(500).json({ message: e.message });
+  }
+};
+
+export const findCourseByName = async (req, res) => {
+  try {
+    const courseToUpdate = req.params.courseName;
+    if (!courseToUpdate) {
+      return res.status(404).json({ message: "cannot find course by name" });
+    }
+    const regex = new RegExp("^" + courseToUpdate, "i");
+
+    const courseToFindByName = await courseModel.findOne({
+      courseName: regex,
+    });
+
+    if (!courseToFindByName) {
+      return res.status(404).json({ message: "cannot find course" });
+    }
+    return res
+      .status(200)
+      .json({
+        message: "course found successfully",
+        course: courseToFindByName,
+      });
+  } catch (e) {
+    console.log(e.message);
     return res.status(500).json({ message: e.message });
   }
 };

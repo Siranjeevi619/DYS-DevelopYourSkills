@@ -13,7 +13,7 @@ const PORT = 6969;
 app.use(express.json());
 connectDB();
 
-app.use("/", courseRouter);
+app.use("/courses", courseRouter);
 
 app.get("/", (req, res) => {
   res.send("Hello DYS");
