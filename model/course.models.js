@@ -1,93 +1,112 @@
-import mongoose, { Model, Schema } from "mongoose";
+import mongoose from "mongoose";
 import { v4 as uuidv4 } from "uuid";
-// courseId, courseName, courseDescripition, courseTutor, courseLanguage, courseDuration, courseTags, courseTutorIcons, courseThumbnail,
-//courseThumbnail ,courseDocs , courseOutcome, coursePlayList,courseCertify
 
-const Playlist = new mongoose.Schema({
+const VideoSchema = new mongoose.Schema({
   title: {
     type: String,
     required: true,
     minlength: 1,
     maxlength: 255,
   },
-  videoUrls: [
-    {
-      type: String,
-      required: true,
-      match: /https?:\/\/(www\.)?youtube\.com\/watch\?v=[\w-]+/,
-    },
-  ],
+  link: {
+    type: String,
+    required: true,
+    // match: /https?:\/\/(www\.)?(youtube\.com\/watch\?v=|youtu\.be\/)[\w-]+/, // Updated regex to handle both full and shortened YouTube URLs
+  },
 });
 
 const courseSchema = new mongoose.Schema({
   courseId: {
     type: String,
-    require: true,
+    required: true,
     unique: true,
     default: uuidv4,
   },
   courseName: {
-    require: true,
-    unique: true,
+    required: true,
+    // unique: true,
     type: String,
     minlength: 1,
     maxlength: 255,
   },
   courseDescription: {
-    require: true,
-    unique: true,
+    required: true,
     type: String,
-    minlength: 10,
-    // maxlength: 255,
+    minlength: 1,
   },
   courseTutor: {
-    require: true,
+    required: true,
     type: String,
     minlength: 1,
     maxlength: 255,
   },
   courseLanguage: {
-    require: true,
+    required: true,
     type: String,
     minlength: 3,
     maxlength: 30,
   },
   courseDuration: {
-    require: true,
+    required: true,
     type: Number,
   },
   courseTags: {
     type: [String],
     validate: {
       validator: function (v) {
-        return v.length <= 20;
+        return v.length <= 20 && v.every((tag) => tag.length > 0);
       },
-      message: "you have maximum of 20 promo tags",
+      message: "Maximum of 20 tags allowed, and tags cannot be empty.",
     },
   },
   courseTutorIcon: {
-    type: String,
-    require: true,
+    data: Buffer,
+    contentType: String,
+    // required: true,
   },
   courseThumbnail: {
-    type: String,
-    require: true,
+    data: Buffer,
+    contentType: String,
+    // required: true,
   },
-  courseDocs: [{ type: String, require: true }],
+  courseDocs: [
+    {
+      type: String,
+      required: true,
+      validate: {
+        validator: function (v) {
+          return v.length > 0;
+        },
+        message: "Documents must not be empty.",
+      },
+    },
+  ],
   courseOutcome: [
     {
       type: String,
-      require: true,
+      required: true,
+      validate: {
+        validator: function (v) {
+          return v.length > 0;
+        },
+        message: "Outcome must not be empty.",
+      },
     },
   ],
   courseCertify: [
     {
       type: String,
-      require: true,
+      required: true,
+      validate: {
+        validator: function (v) {
+          return v.length > 0;
+        },
+        message: "Certify field must not be empty.",
+      },
     },
   ],
-  coursePlayList: [Playlist],
+  coursePlayList: [VideoSchema],
 });
 
-const courseModel = mongoose.model("course", courseSchema);
+const courseModel = mongoose.model("Course", courseSchema);
 export default courseModel;
