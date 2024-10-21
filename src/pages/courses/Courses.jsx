@@ -5,20 +5,19 @@ function Courses() {
   const [courseData, setCourseData] = useState([]);
 
   useEffect(() => {
-    axios
-      .get("http://localhost:6969/courses/")
-      .then((res) => {
-        // Check if readCourse exists and is an array
-        if (Array.isArray(res.data.readCourse)) {
-          setCourseData(res.data.readCourse);
-        } else {
-          console.error("Unexpected response format:", res.data);
-        }
-      })
-      .catch((e) => {
-        console.log(e.message);
-      });
+    const fetchCourses = async () => {
+      try {
+        const response = await axios.get("http://localhost:6969/courses/");
+        setCourseData(response.data.readCourse);
+      } catch (error) {
+        console.error("Error fetching course list:", error.message);
+      }
+    };
+
+    fetchCourses();
   }, []);
+
+  console.log(courseData.courseThumbnail);
 
   return (
     <div>
@@ -30,7 +29,7 @@ function Courses() {
                 <div className="card" style={{ width: "19rem" }}>
                   <div className="card-img-top">
                     <img
-                      src={`http://localhost:6969${course.courseThumbnail}`}
+                      src={`http://localhost:6969/uploads/${course.courseThumbnail}`}
                       alt="course-image"
                       className="img-fluid"
                       style={{ width: "100%", height: "auto" }}
@@ -41,7 +40,7 @@ function Courses() {
                     <div className="d-flex align-items-start">
                       <div className="me-2">
                         <img
-                          src={`http://localhost:6969/courses/${course.courseTutorIcon}`}
+                          src={`http://localhost:6969/images/${course.courseTutorIcon}`}
                           className="img-fluid rounded-circle"
                           style={{ width: "40px", height: "40px" }}
                           alt="Tutor Logo"

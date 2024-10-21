@@ -1,9 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Chip, TextField, Button } from "@mui/material";
 import axios from "axios";
-// import axios from "axios";
 
 function AddCourse() {
+  const [courseName, setCourseName] = useState("");
+  const [courseDescription, setCourseDescription] = useState("");
+  const [courseTutor, setCourseTutor] = useState("");
+  const [courseLanguage, setCourseLanguage] = useState("");
+  const [courseDuration, setCourseDuration] = useState("");
+  const [courseTutorIcon, setCourseTutorIcon] = useState(null);
+  const [courseThumbnail, setCourseThumbnail] = useState(null);
+
   const [inputCourseTag, setInputCourseTag] = useState("");
   const [tags, setTags] = useState([]);
 
@@ -21,47 +28,6 @@ function AddCourse() {
 
   const [inputVideoTitle, setInputVideoTitle] = useState("");
   const [inputVideoLink, setInputVideoLink] = useState("");
-
-  const [addCourse, setAddCourse] = useState({
-    courseName: "",
-    courseDescription: "",
-    courseTutor: "",
-    courseLanguage: "",
-    courseDuration: "",
-    courseTags: [],
-    courseTutorIcon: "",
-    courseThumbnail: "",
-    courseDocs: [],
-    courseOutcome: [],
-    courseCertify: [],
-    coursePlayList: [],
-  });
-
-  // Update addCourse state whenever dependent states change
-  useEffect(() => {
-    setAddCourse((prev) => ({ ...prev, courseTags: tags }));
-  }, [tags]);
-
-  useEffect(() => {
-    setAddCourse((prev) => ({ ...prev, coursePlayList: playlists }));
-  }, [playlists]);
-
-  useEffect(() => {
-    setAddCourse((prev) => ({ ...prev, courseCertify: certification }));
-  }, [certification]);
-
-  useEffect(() => {
-    setAddCourse((prev) => ({ ...prev, courseDocs: documents }));
-  }, [documents]);
-
-  useEffect(() => {
-    setAddCourse((prev) => ({ ...prev, courseOutcome: outcomes }));
-  }, [outcomes]);
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setAddCourse({ ...addCourse, [name]: value });
-  };
 
   const handleTagInput = (e) => {
     if (e.key === " ") {
@@ -113,25 +79,23 @@ function AddCourse() {
   };
 
   const handleCourseTutorIcon = (e) => {
-    setAddCourse({ ...addCourse, courseTutorIcon: e.target.files[0] });
+    setCourseTutorIcon(e.target.files[0]);
   };
 
   const handleCourseThumbnail = (e) => {
-    setAddCourse({ ...addCourse, courseThumbnail: e.target.files[0] });
+    setCourseThumbnail(e.target.files[0]);
   };
 
   const handleTagDelete = (tagToDelete) => {
     setTags(tags.filter((tag) => tag !== tagToDelete));
   };
 
-  const handleCertificationDelete = (certificationToDelete) => {
-    setCertification(
-      certification.filter((cert) => cert !== certificationToDelete)
-    );
+  const handleCertificationDelete = (certToDelete) => {
+    setCertification(certification.filter((cert) => cert !== certToDelete));
   };
 
-  const handleDocumentDelete = (docsToDelete) => {
-    setDocuments(documents.filter((doc) => doc !== docsToDelete));
+  const handleDocumentDelete = (docToDelete) => {
+    setDocuments(documents.filter((doc) => doc !== docToDelete));
   };
 
   const handleOutcomeDelete = (outcomeToDelete) => {
@@ -146,24 +110,20 @@ function AddCourse() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // const data = new FormData();
     const data = new FormData();
 
-    data.append("courseName", addCourse.courseName);
-    data.append("courseDescription", addCourse.courseDescription);
-    data.append("courseTutor", addCourse.courseTutor);
-    data.append("courseLanguage", addCourse.courseLanguage);
-    data.append("courseDuration", addCourse.courseDuration);
-    data.append("courseTutorIcon", addCourse.courseTutorIcon);
-    data.append("courseThumbnail", addCourse.courseThumbnail);
-    data.append("courseTags", JSON.stringify(addCourse.courseTags));
-    data.append("courseDocs", JSON.stringify(addCourse.courseDocs));
-    data.append("courseOutcome", JSON.stringify(addCourse.courseOutcome));
-    data.append("courseCertify", JSON.stringify(addCourse.courseCertify));
-    data.append("coursePlayList", JSON.stringify(addCourse.coursePlayList));
-    console.log(addCourse);
-    console.log(data);
+    data.append("courseName", courseName);
+    data.append("courseDescription", courseDescription);
+    data.append("courseTutor", courseTutor);
+    data.append("courseLanguage", courseLanguage);
+    data.append("courseDuration", courseDuration);
+    data.append("courseTutorIcon", courseTutorIcon);
+    data.append("courseThumbnail", courseThumbnail);
+    data.append("courseTags", JSON.stringify(tags));
+    data.append("courseDocs", JSON.stringify(documents));
+    data.append("courseOutcome", JSON.stringify(outcomes));
+    data.append("courseCertify", JSON.stringify(certification));
+    data.append("coursePlayList", JSON.stringify(playlists));
 
     try {
       const response = await axios.post(
@@ -175,23 +135,13 @@ function AddCourse() {
           },
         }
       );
-      console.log(response.status);
-
       if (response.status === 201) {
         console.log("data submitted successfully");
       } else {
-        console.log("error in submitting error");
+        console.log("error in submitting");
       }
     } catch (error) {
-      console.log(error.message);
-      if (error.response) {
-        console.error("Error Status:", error.response.status);
-        console.error("Error Data:", error.response.data);
-      } else if (error.request) {
-        console.error("No response received:", error.request);
-      } else {
-        console.error("Error:", error.message);
-      }
+      console.error("Error:", error.message);
     }
   };
 
@@ -210,9 +160,8 @@ function AddCourse() {
               type="text"
               className="form-control"
               id="courseName"
-              name="courseName"
-              value={addCourse.courseName}
-              onChange={handleInputChange}
+              value={courseName}
+              onChange={(e) => setCourseName(e.target.value)}
               placeholder="Course Name"
               required
             />
@@ -225,9 +174,8 @@ function AddCourse() {
               className="form-control"
               placeholder="Course Description"
               id="courseDescription"
-              name="courseDescription"
-              value={addCourse.courseDescription}
-              onChange={handleInputChange}
+              value={courseDescription}
+              onChange={(e) => setCourseDescription(e.target.value)}
               required
             ></textarea>
             <label htmlFor="courseDescription">Course Description</label>
@@ -239,9 +187,8 @@ function AddCourse() {
               type="text"
               className="form-control"
               id="courseTutor"
-              name="courseTutor"
-              value={addCourse.courseTutor}
-              onChange={handleInputChange}
+              value={courseTutor}
+              onChange={(e) => setCourseTutor(e.target.value)}
               placeholder="Tutor Name"
               required
             />
@@ -254,9 +201,8 @@ function AddCourse() {
               type="text"
               className="form-control"
               id="courseLanguage"
-              name="courseLanguage"
-              value={addCourse.courseLanguage}
-              onChange={handleInputChange}
+              value={courseLanguage}
+              onChange={(e) => setCourseLanguage(e.target.value)}
               placeholder="Course Language"
               required
             />
@@ -269,9 +215,8 @@ function AddCourse() {
               type="text"
               className="form-control"
               id="courseDuration"
-              name="courseDuration"
-              value={addCourse.courseDuration}
-              onChange={handleInputChange}
+              value={courseDuration}
+              onChange={(e) => setCourseDuration(e.target.value)}
               placeholder="Course Duration"
               required
             />
@@ -307,100 +252,120 @@ function AddCourse() {
           </div>
 
           {/* Tags Input */}
-          <TextField
-            value={inputCourseTag}
-            onKeyDown={handleTagInput}
-            onChange={(e) => setInputCourseTag(e.target.value)}
-            label="Add Tags (press space)"
-            fullWidth
-          />
-          {tags.map((tag, index) => (
-            <Chip
-              key={index}
-              label={tag}
-              onDelete={() => handleTagDelete(tag)}
-              style={{ margin: "5px" }}
+          <div className="mb-3">
+            <TextField
+              value={inputCourseTag}
+              onKeyDown={handleTagInput}
+              onChange={(e) => setInputCourseTag(e.target.value)}
+              label="Add Tags (press space)"
+              fullWidth
             />
-          ))}
+            {tags.map((tag, index) => (
+              <Chip
+                key={index}
+                label={tag}
+                onDelete={() => handleTagDelete(tag)}
+                style={{ margin: "5px" }}
+              />
+            ))}
+          </div>
 
           {/* Playlist Input */}
-          <TextField
-            value={inputVideoTitle}
-            onKeyPress={handleVideoInput}
-            onChange={(e) => setInputVideoTitle(e.target.value)}
-            label="Video Title"
-            fullWidth
-            className="mb-3"
-          />
-          <TextField
-            value={inputVideoLink}
-            onKeyPress={handleVideoInput}
-            onChange={(e) => setInputVideoLink(e.target.value)}
-            label="Video Link"
-            fullWidth
-            className="mb-3"
-          />
-          {playlists.map((playlist, index) => (
-            <Chip
-              key={index}
-              label={`${playlist.title} (${playlist.link})`}
-              onDelete={() => handlePlaylistDelete(playlist)}
-              style={{ margin: "5px" }}
+          <div className="mb-3">
+            <TextField
+              value={inputVideoTitle}
+              onKeyPress={handleVideoInput}
+              onChange={(e) => setInputVideoTitle(e.target.value)}
+              label="Add Video Title"
+              fullWidth
             />
-          ))}
+            <TextField
+              value={inputVideoLink}
+              onKeyPress={handleVideoInput}
+              onChange={(e) => setInputVideoLink(e.target.value)}
+              label="Add Video Link"
+              fullWidth
+              style={{ marginTop: "10px" }}
+            />
+            {playlists.map((playlist, index) => (
+              <Chip
+                key={index}
+                label={`${playlist.title} (${playlist.link})`}
+                onDelete={() => handlePlaylistDelete(playlist)}
+                style={{ margin: "5px" }}
+              />
+            ))}
+          </div>
 
           {/* Certification Input */}
-          <TextField
-            value={inputCourseCertification}
-            onKeyDown={handleCertificationInput}
-            onChange={(e) => setInputCourseCertification(e.target.value)}
-            label="Certifications (press space)"
-            fullWidth
-          />
-          {certification.map((cert, index) => (
-            <Chip
-              key={index}
-              label={cert}
-              onDelete={() => handleCertificationDelete(cert)}
-              style={{ margin: "5px" }}
+          <div className="mb-3">
+            <TextField
+              value={inputCourseCertification}
+              onKeyDown={handleCertificationInput}
+              onChange={(e) => setInputCourseCertification(e.target.value)}
+              label="Add Certifications (press space)"
+              fullWidth
             />
-          ))}
+            {certification.map((cert, index) => (
+              <Chip
+                key={index}
+                label={cert}
+                onDelete={() => handleCertificationDelete(cert)}
+                style={{ margin: "5px" }}
+              />
+            ))}
+          </div>
 
           {/* Documents Input */}
-          <TextField
-            value={inputCourseDocuments}
-            onKeyDown={handleDocumentInput}
-            onChange={(e) => setInputCourseDocuments(e.target.value)}
-            label="Documents (press space)"
-            fullWidth
-          />
-          {documents.map((doc, index) => (
-            <Chip
-              key={index}
-              label={doc}
-              onDelete={() => handleDocumentDelete(doc)}
-              style={{ margin: "5px" }}
+          <div className="mb-3">
+            <TextField
+              value={inputCourseDocuments}
+              onKeyDown={handleDocumentInput}
+              onChange={(e) => setInputCourseDocuments(e.target.value)}
+              label="Add Documents (press space)"
+              fullWidth
             />
-          ))}
+            {documents.map((doc, index) => (
+              <Chip
+                key={index}
+                label={doc}
+                onDelete={() => handleDocumentDelete(doc)}
+                style={{ margin: "5px" }}
+              />
+            ))}
+          </div>
 
           {/* Outcomes Input */}
-          <TextField
-            value={inputCourseOutcome}
-            onKeyDown={handleOutcomeInput}
-            onChange={(e) => setInputCourseOutcome(e.target.value)}
-            label="Outcomes (press space)"
-            fullWidth
-          />
-          {outcomes.map((outcome, index) => (
-            <Chip
-              key={index}
-              label={outcome}
-              onDelete={() => handleOutcomeDelete(outcome)}
-              style={{ margin: "5px" }}
+          <div className="mb-3">
+            <TextField
+              value={inputCourseOutcome}
+              onKeyDown={handleOutcomeInput}
+              onChange={(e) => setInputCourseOutcome(e.target.value)}
+              label="Add Outcomes (press space)"
+              fullWidth
             />
-          ))}
+            {outcomes.map((outcome, index) => (
+              <Chip
+                key={index}
+                label={outcome}
+                onDelete={() => handleOutcomeDelete(outcome)}
+                style={{ margin: "5px" }}
+              />
+            ))}
+          </div>
+
+          {/* Submit Button */}
+          <div className="d-grid">
+            <Button
+              type="submit"
+              variant="contained"
+              color="primary"
+              className="my-3"
+            >
+              Add Course
+            </Button>
+          </div>
         </div>
-        <button className="btn border-primary bg-primary-subtle">submit</button>
       </form>
     </div>
   );
