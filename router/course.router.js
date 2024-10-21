@@ -1,6 +1,6 @@
 import express from "express";
 import multer from "multer";
-import fs from "fs";
+// import fs from "fs";
 import {
   addCourse,
   deleteCourse,
@@ -11,32 +11,21 @@ import {
 
 const courseRouter = express.Router();
 
-// Ensure 'uploads' directory exists
-const dir = "./uploads";
-if (!fs.existsSync(dir)) {
-  fs.mkdirSync(dir);
-}
-
-// Multer storage configuration
+// file upload
 const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, "./uploads"); // Ensure this folder exists
-  },
+  destination: "./uploads",
   filename: (req, file, cb) => {
-    cb(null, `${Date.now()}-${file.originalname}`); // Unique filename
+    cb(null, file.fieldname + "-" + Date.now() + file.originalname);
   },
 });
 
-// Multer middleware for handling file uploads
 const upload = multer({
   storage: storage,
-  limits: { fileSize: 10000000 }, // Limit file size to 10MB
+  limits: { fileSize: 10000000 },
 }).fields([
-  { name: "courseTutorIcon", maxCount: 1 }, // Handle single icon
-  { name: "courseThumbnail", maxCount: 1 }, // Handle single thumbnail
+  { name: "courseTutorIcon", maxCount: 1 },
+  { name: "courseThumbnail", maxCount: 1 },
 ]);
-
-// Routes
 
 // Get all courses
 courseRouter.get("/", readCourse);
@@ -44,7 +33,7 @@ courseRouter.get("/", readCourse);
 // Add new course (with file upload)
 courseRouter.post("/", upload, addCourse);
 
-// Update existing course by courseId
+// update course
 courseRouter.put("/:courseId", updateCourse);
 
 // Delete course by courseId

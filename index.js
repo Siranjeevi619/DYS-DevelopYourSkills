@@ -12,20 +12,11 @@ app.use(express.json());
 
 connectDB();
 
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, "public/img/");
-  },
-  filename: function (req, file, cb) {
-    cb(null, Date.now() + "-" + file.originalname);
-  },
-});
 
-app.use('/images', express.static("public/images/"));
 
-export const upload = multer({ storage: storage });
+app.use("/images", express.static("public/img/"));
 
-// app.use('/images')
+
 app.use("/courses", courseRouter);
 
 app.get("/", (req, res) => {
