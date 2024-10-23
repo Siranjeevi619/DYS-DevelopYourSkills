@@ -7,8 +7,10 @@ function Courses() {
   useEffect(() => {
     const fetchCourses = async () => {
       try {
-        const response = await axios.get("http://localhost:6969/courses/");
-        setCourseData(response.data.readCourse);
+        const response = await axios.get("http://localhost:8080/course/");
+        setCourseData(response.data.data);
+        // console.log(response.data.data);
+        // console.log(response.data.data[0].courseTutorIcon);
       } catch (error) {
         console.error("Error fetching course list:", error.message);
       }
@@ -17,7 +19,7 @@ function Courses() {
     fetchCourses();
   }, []);
 
-  console.log(courseData.courseThumbnail);
+  // console.log(courseData.courseThumbnail);
 
   return (
     <div>
@@ -29,7 +31,7 @@ function Courses() {
                 <div className="card" style={{ width: "19rem" }}>
                   <div className="card-img-top">
                     <img
-                      src={`http://localhost:6969/${course.courseThumbnail}`}
+                      src={course.courseTutorIcon}
                       alt="course-image"
                       className="img-fluid"
                       style={{ width: "100%", height: "auto" }}
@@ -40,7 +42,7 @@ function Courses() {
                     <div className="d-flex align-items-start">
                       <div className="me-2">
                         <img
-                          src={`http://localhost:6969/images/${course.courseTutorIcon}`}
+                          src={course.courseThumbnail}
                           className="img-fluid rounded-circle"
                           style={{ width: "40px", height: "40px" }}
                           alt="Tutor Logo"

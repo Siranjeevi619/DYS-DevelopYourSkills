@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Chip, TextField, Button } from "@mui/material";
 import axios from "axios";
+import { configure } from "@testing-library/react";
 
 function AddCourse() {
   const [courseName, setCourseName] = useState("");
@@ -11,11 +12,17 @@ function AddCourse() {
   const [courseTutorIcon, setCourseTutorIcon] = useState(null);
   const [courseThumbnail, setCourseThumbnail] = useState(null);
 
+  const [videoTitle, setVideoTitle] = useState([]);
+  const [videoTitleInput, setVideoTitleInput] = useState("");
+
+  const [videoLink, setVideoLink] = useState([]);
+  const [videoLinkInput, setVideoLinkInput] = useState("");
+
   const [inputCourseTag, setInputCourseTag] = useState("");
   const [tags, setTags] = useState([]);
 
-  const [inputCoursePlaylist, setInputCoursePlaylist] = useState("");
-  const [playlists, setPlaylists] = useState([]);
+  // const [inputCoursePlaylist, setInputCoursePlaylist] = useState("");
+  // const [playlists, setPlaylists] = useState([]);
 
   const [inputCourseCertification, setInputCourseCertification] = useState("");
   const [certification, setCertification] = useState([]);
@@ -26,8 +33,8 @@ function AddCourse() {
   const [inputCourseOutcome, setInputCourseOutcome] = useState("");
   const [outcomes, setOutcomes] = useState([]);
 
-  const [inputVideoTitle, setInputVideoTitle] = useState("");
-  const [inputVideoLink, setInputVideoLink] = useState("");
+  // const [inputVideoTitle, setInputVideoTitle] = useState("");
+  // const [inputVideoLink, setInputVideoLink] = useState("");
 
   const handleTagInput = (e) => {
     if (e.key === " ") {
@@ -65,15 +72,33 @@ function AddCourse() {
     }
   };
 
-  const handleVideoInput = (e) => {
-    if (e.key === "Enter") {
-      if (inputVideoTitle.trim() !== "" && inputVideoLink.trim() !== "") {
-        setPlaylists([
-          ...playlists,
-          { title: inputVideoTitle, link: inputVideoLink },
-        ]);
-        setInputVideoTitle("");
-        setInputVideoLink("");
+  // const handleVideoInput = (e) => {
+  //   if (e.key === "Enter") {
+  //     if (inputVideoTitle.trim() !== "" && inputVideoLink.trim() !== "") {
+  //       setPlaylists([
+  //         ...playlists,
+  //         { title: inputVideoTitle, link: inputVideoLink },
+  //       ]);
+  //       setInputVideoTitle("");
+  //       setInputVideoLink("");
+  //     }
+  //   }
+  // };
+
+  const handleVideoTitleInput = (e) => {
+    if (e.key === " ") {
+      if (videoTitleInput.trim() !== "") {
+        setVideoTitle([...videoTitle, videoTitleInput]);
+        setVideoTitleInput(""); // Correcting the state update here
+      }
+    }
+  };
+
+  const handleVideoLinkInput = (e) => {
+    if (e.key === " ") {
+      if (videoLinkInput.trim() !== "") {
+        setVideoLink([...videoLink, videoLinkInput]);
+        setVideoLinkInput(""); // Reset input after adding
       }
     }
   };
@@ -102,10 +127,18 @@ function AddCourse() {
     setOutcomes(outcomes.filter((outcome) => outcome !== outcomeToDelete));
   };
 
-  const handlePlaylistDelete = (playlistToDelete) => {
-    setPlaylists(
-      playlists.filter((playlist) => playlist.title !== playlistToDelete.title)
-    );
+  // const handlePlaylistDelete = (playlistToDelete) => {
+  //   setPlaylists(
+  //     playlists.filter((playlist) => playlist.title !== playlistToDelete.title)
+  //   );
+  // };
+
+  const handleVideoTitleToDelete = (titleToDelete) => {
+    setVideoTitle(videoTitle.filter((title) => title !== titleToDelete));
+  };
+
+  const handleVideoLinkToDelete = (linkToDelete) => {
+    setVideoLink(videoLink.filter((link) => link !== linkToDelete));
   };
 
   const handleSubmit = async (e) => {
@@ -119,19 +152,23 @@ function AddCourse() {
     data.append("courseDuration", courseDuration);
     data.append("courseTutorIcon", courseTutorIcon);
     data.append("courseThumbnail", courseThumbnail);
-    data.append("courseTags", JSON.stringify(tags));
-    data.append("courseDocs", JSON.stringify(documents));
-    data.append("courseOutcome", JSON.stringify(outcomes));
-    data.append("courseCertify", JSON.stringify(certification));
-    data.append("coursePlayList", JSON.stringify(playlists));
+    data.append("courseTags", tags);
+    data.append("courseDocs", documents);
+    data.append("courseOutcome", outcomes);
+    data.append("courseCertify", certification);
+    // data.append("coursePlayList", playlists.);
+    data.append("videoTitle", videoTitle);
+    data.append("videoLink", videoLink);
 
-    console.log(playlists);
-    console.log(courseTutorIcon);
-    console.log(courseThumbnail);
+    // console.log(playlists);
+    // console.log(courseTutorIcon);videoTitle
+    // console.log(courseThumbnail);
+    console.log(videoLink);
+    console.log(videoTitle);
 
     try {
       const response = await axios.post(
-        "http://localhost:6969/submit/",
+        "http://localhost:8080/course/add",
         data,
         {
           headers: {
@@ -274,28 +311,41 @@ function AddCourse() {
             ))}
           </div>
 
-          {/* Playlist Input */}
+          {/* video title input */}
           <div className="mb-3">
             <TextField
-              value={inputVideoTitle}
-              onKeyPress={handleVideoInput}
-              onChange={(e) => setInputVideoTitle(e.target.value)}
+              value={videoTitleInput}
+              onKeyPress={handleVideoTitleInput}
+              onChange={(e) => setVideoTitleInput(e.target.value)}
               label="Add Video Title"
               fullWidth
             />
+            {videoTitle.map((title, index) => (
+              <Chip
+                key={index}
+                label={title}
+                onDelete={() => handleVideoTitleToDelete(title)}
+                style={{ margin: "5px" }}
+              />
+            ))}
+          </div>
+
+          {/* video link input  */}
+          <div className="mb-3">
             <TextField
-              value={inputVideoLink}
-              onKeyPress={handleVideoInput}
-              onChange={(e) => setInputVideoLink(e.target.value)}
+              value={videoLinkInput}
+              onKeyPress={handleVideoLinkInput}
+              onChange={(e) => setVideoLinkInput(e.target.value)}
               label="Add Video Link"
               fullWidth
               style={{ marginTop: "10px" }}
             />
-            {playlists.map((playlist, index) => (
+
+            {videoLink.map((link, index) => (
               <Chip
                 key={index}
-                label={`${playlist.title} (${playlist.link})`}
-                onDelete={() => handlePlaylistDelete(playlist)}
+                label={link}
+                onDelete={() => handleVideoLinkToDelete(link)}
                 style={{ margin: "5px" }}
               />
             ))}
