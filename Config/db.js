@@ -1,17 +1,17 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
+
 export const connectDB = async () => {
   try {
-    await mongoose
+    const con = await mongoose
       .connect("mongodb://localhost:27017/developyourskills", {
         useNewUrlParser: true,
         useUnifiedTopology: true,
       })
       .then(() => {
-        console.log("DB connect Successfully");
+        console.log("DB connected successfully");
       })
       .catch((e) => {
-        console.log(e.message);
-        console.log("error in connecting db with uri");
+        console.log("error in db connection");
       });
   } catch (e) {
     console.log(e.message);
