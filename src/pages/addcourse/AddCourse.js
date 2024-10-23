@@ -125,9 +125,13 @@ function AddCourse() {
     data.append("courseCertify", JSON.stringify(certification));
     data.append("coursePlayList", JSON.stringify(playlists));
 
+    console.log(playlists);
+    console.log(courseTutorIcon);
+    console.log(courseThumbnail);
+
     try {
       const response = await axios.post(
-        "http://localhost:6969/courses/",
+        "http://localhost:6969/submit/",
         data,
         {
           headers: {

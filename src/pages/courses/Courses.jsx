@@ -29,7 +29,7 @@ function Courses() {
                 <div className="card" style={{ width: "19rem" }}>
                   <div className="card-img-top">
                     <img
-                      src={`http://localhost:6969/uploads/${course.courseThumbnail}`}
+                      src={`http://localhost:6969/${course.courseThumbnail}`}
                       alt="course-image"
                       className="img-fluid"
                       style={{ width: "100%", height: "auto" }}
