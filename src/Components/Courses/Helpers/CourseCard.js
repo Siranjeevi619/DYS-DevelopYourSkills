@@ -15,8 +15,8 @@ function CourseCard(props) {
   }
 
   function handleCoursePage(id) {
-    navigate("/course-view");
-    window.open(id);
+    navigate("/courseview");
+    // window.open(id);
     // console.log(id);
   }
 
@@ -35,10 +35,7 @@ function CourseCard(props) {
               by<span className="text-primary h5"> {props.Youtuber}</span>
             </p>
             <div className="row">
-              <button
-                className="btn btn-primary"
-                onClick={handleCoursePage}
-              >
+              <button className="btn btn-primary" onClick={handleCoursePage}>
                 View course
               </button>
             </div>

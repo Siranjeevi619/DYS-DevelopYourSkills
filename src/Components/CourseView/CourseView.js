@@ -7,7 +7,7 @@ import { useNavigate } from "react-router";
 function CourseView() {
   const navigate = useNavigate();
   const handleViewCourse = () => {
-    navigate("/view-course");
+    navigate("/ViewCourses");
   };
   return (
     <div className="bg-courseview py-4">

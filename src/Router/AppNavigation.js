@@ -8,6 +8,7 @@ import Course from "../Components/Courses/Course";
 import Footers from "../Components/Footers/Footer";
 import CourseView from "../Components/CourseView/CourseView";
 import ViewCourses from "../Components/ViewCourse/ViewCourses";
+import SenseiPage from "../Components/Sensei/SenseiPage";
 
 function AppNavigation() {
   return (
@@ -16,10 +17,11 @@ function AppNavigation() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/Course" element={<Course />} />
-        <Route path="/course-view" element={<CourseView />} />
+        <Route path="/courseview" element={<CourseView />} />
         <Route path="/About" element={<About />} />
         <Route path="/Contact" element={<Contact />} />
-        <Route path="/view-course" element={<ViewCourses />}></Route>
+        <Route path="/ViewCourses" element={<ViewCourses />}></Route>
+        <Route path="/sensei" element={<SenseiPage />}></Route>
       </Routes>
       <Footers />
     </div>
