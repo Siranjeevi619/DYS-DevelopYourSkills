@@ -145,26 +145,24 @@ function AddCourse() {
     e.preventDefault();
     const data = new FormData();
 
-    data.append("courseName", courseName);
-    data.append("courseDescription", courseDescription);
-    data.append("courseTutor", courseTutor);
-    data.append("courseLanguage", courseLanguage);
-    data.append("courseDuration", courseDuration);
-    data.append("courseTutorIcon", courseTutorIcon);
-    data.append("courseThumbnail", courseThumbnail);
-    data.append("courseTags", tags);
-    data.append("courseDocs", documents);
-    data.append("courseOutcome", outcomes);
-    data.append("courseCertify", certification);
-    // data.append("coursePlayList", playlists.);
-    data.append("videoTitle", videoTitle);
-    data.append("videoLink", videoLink);
+    const courseData = {
+      courseName,
+      courseDescription,
+      tutorName: courseTutor,
+      courseLanguage,
+      courseDuration,
+      tags,
+      certifications: certification,
+      documents,
+      outcomes,
+      videoTitle,
+      videoLink,
+    };
 
-    // console.log(playlists);
-    // console.log(courseTutorIcon);videoTitle
-    // console.log(courseThumbnail);
-    console.log(videoLink);
-    console.log(videoTitle);
+    // Append course data as JSON string
+    data.append("course", JSON.stringify(courseData));
+    data.append("tutorIcon", courseTutorIcon);
+    data.append("courseThumbnail", courseThumbnail);
 
     try {
       const response = await axios.post(
