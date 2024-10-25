@@ -5,6 +5,7 @@ import AddCourse from "../pages/addcourse/AddCourse";
 import Courses from "../pages/courses/Courses";
 import Dashboard from "../pages/dashboard/Dashboard";
 import Navbar from "../components/Navbar";
+import UpdateCourse from "../pages/updateCourse/UpdateCourse";
 
 function AppRouter() {
   return (
@@ -15,6 +16,7 @@ function AppRouter() {
         <Route path="/addcourse" element={<AddCourse />}></Route>
         <Route path="/courses" element={<Courses />}></Route>
         <Route path="/dashboard" element={<Dashboard />}></Route>
+        <Route path="/updatecourse" element={<UpdateCourse />}></Route>
       </Routes>
     </div>
   );

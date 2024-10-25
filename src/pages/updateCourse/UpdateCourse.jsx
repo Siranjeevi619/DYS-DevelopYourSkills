@@ -3,7 +3,7 @@ import { Chip, TextField, Button } from "@mui/material";
 import axios from "axios";
 // import { configure } from "@testing-library/react";
 
-function AddCourse() {
+function UpdateCourse() {
   const [courseName, setCourseName] = useState("");
   const [courseDescription, setCourseDescription] = useState("");
   const [courseTutor, setCourseTutor] = useState("");
@@ -11,6 +11,7 @@ function AddCourse() {
   const [courseDuration, setCourseDuration] = useState("");
   const [courseTutorIcon, setCourseTutorIcon] = useState(null);
   const [courseThumbnail, setCourseThumbnail] = useState(null);
+  const [courseUniqueId, setcourseUniqueId] = useState("");
 
   const [videoTitle, setVideoTitle] = useState([]);
   const [videoTitleInput, setVideoTitleInput] = useState("");
@@ -146,6 +147,7 @@ function AddCourse() {
     const data = new FormData();
 
     const courseData = {
+      courseUniqueId,
       courseName,
       courseDescription,
       tutorName: courseTutor,
@@ -165,30 +167,18 @@ function AddCourse() {
     data.append("courseThumbnail", courseThumbnail);
 
     try {
-      const response = await axios.post(
-        "http://localhost:8080/course/add",
+      const response = await axios.put(
+        `http://localhost:8080/course/${courseUniqueId}`,
+        
         data,
         {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
+        //   headers: {
+        //     "Content-Type": "multipart/form-data",
+        //   },
         }
       );
-      if (response.status === 201) {
+      if (response.status === 200) {
         console.log("data submitted successfully");
-        setCourseName("");
-        setCourseDescription("");
-        setCourseTutor("");
-        setCourseLanguage("");
-        setCourseDuration("");
-        setCourseTutorIcon(null);
-        setCourseThumbnail(null);
-        setVideoTitle([]);
-        setVideoLink([]);
-        setTags([]);
-        setCertification([]);
-        setDocuments([]);
-        setOutcomes([]);
       } else {
         console.log("error in submitting");
       }
@@ -199,13 +189,27 @@ function AddCourse() {
 
   return (
     <div className="container my-5 my-md-3">
-      <h2 className="text-center">Add New Course</h2>
+      <h2 className="text-center">update Course</h2>
       <form
         onSubmit={handleSubmit}
         encType="multipart/form-data"
         className="row justify-content-center"
       >
         <div className="col-12 col-md-6">
+          {/* Course Id */}
+          <div className="form-floating mb-3">
+            <input
+              type="text"
+              className="form-control"
+              id="courseUniqueId"
+              value={courseUniqueId}
+              onChange={(e) => setcourseUniqueId(e.target.value)}
+              placeholder="Course Name"
+              required
+            />
+            <label htmlFor="courseUniqueId">Course Id</label>
+          </div>
+
           {/* Course Name */}
           <div className="form-floating mb-3">
             <input
@@ -436,4 +440,4 @@ function AddCourse() {
   );
 }
 
-export default AddCourse;
+export default UpdateCourse;

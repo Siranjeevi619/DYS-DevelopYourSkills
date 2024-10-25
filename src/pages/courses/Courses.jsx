@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function Courses() {
   const [courseData, setCourseData] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchCourses = async () => {
@@ -11,6 +13,7 @@ function Courses() {
         setCourseData(response.data.data);
         // console.log(response.data.data);
         // console.log(response.data.data[0].courseTutorIcon);
+        console.log(courseData);
       } catch (error) {
         console.error("Error fetching course list:", error.message);
       }
@@ -20,45 +23,44 @@ function Courses() {
   }, []);
 
   // console.log(courseData.courseThumbnail);
+  const handleEditCourse = () => {
+    navigate('/updatecourse')
+  };
 
   return (
     <div>
       <div className="container">
         <div className="row">
           {Array.isArray(courseData) && courseData.length > 0 ? (
-            courseData.map((course) => (
-              <div className="col-12" key={course._id}>
-                <div className="card" style={{ width: "19rem" }}>
-                  <div className="card-img-top">
+            courseData.map((course, index) => (
+              <div
+                key={index}
+                className="col-12 col-md-3 my-md-4 my-2 col-lg-3 col-xl-3 col-xxl-4"
+              >
+                <div className="d-flex justify-content-center align-items-center">
+                  <div className="card shadow course-card">
                     <img
-                      src={course.courseTutorIcon}
-                      alt="course-image"
-                      className="img-fluid"
-                      style={{ width: "100%", height: "auto" }}
+                      src={course.courseThumbnail}
+                      className="card-img-top course-card-img h-auto"
+                      alt="Course Thumbnail"
                     />
-                  </div>
-
-                  <div className="card-body">
-                    <div className="d-flex align-items-start">
-                      <div className="me-2">
-                        <img
-                          src={course.courseThumbnail}
-                          className="img-fluid rounded-circle"
-                          style={{ width: "40px", height: "40px" }}
-                          alt="Tutor Logo"
-                        />
-                      </div>
-
-                      <div>
-                        <div
-                          className="card-title"
-                          style={{ fontWeight: "bold" }}
+                    <div className="card-body">
+                      <h5 className="card-title">{course.courseName}</h5>
+                      <p className="">{course.courseUniqueId}</p>
+                      <p>
+                        by
+                        <span className="text-primary h5">
+                          {" "}
+                          {course.tutorName}
+                        </span>
+                      </p>
+                      <div className="row">
+                        <button
+                          className="btn btn-primary"
+                          onClick={handleEditCourse}
                         >
-                          {course.courseName}
-                        </div>
-                        <div className="card-text text-muted">
-                          {course.courseTutor}
-                        </div>
+                          Edit course
+                        </button>
                       </div>
                     </div>
                   </div>

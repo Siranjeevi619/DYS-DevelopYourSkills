@@ -16,12 +16,16 @@ function Navbar() {
     navigate("/courses");
   };
 
-  const handleAboutPage = () => {
+  const handleAddCoursePage = () => {
     navigate("/addcourse");
   };
 
-  const handleContactPage = () => {
+  const handleDashboardPage = () => {
     navigate("/dashboard");
+  };
+
+  const handleUpdatePage = () => {
+    navigate("/updatecourse");
   };
 
   return (
@@ -70,8 +74,13 @@ function Navbar() {
                 </NavLink>
               </li>
               <li className="nav-item mx-lg-2 footershref">
+                <NavLink className="nav-link" to="/updatecourse">
+                  Update
+                </NavLink>
+              </li>
+              <li className="nav-item mx-lg-2 footershref">
                 <NavLink className="nav-link" to="/dashboard">
-                  Dashboard
+                  dashboard
                 </NavLink>
               </li>
             </ul>
@@ -122,21 +131,31 @@ function Navbar() {
             <li className="nav-item">
               <NavLink
                 className="nav-link"
-                to="/about"
+                to="/addcourse"
                 data-bs-dismiss="offcanvas"
-                onClick={handleAboutPage}
+                onClick={handleAddCoursePage}
               >
-                About
+                add
               </NavLink>
             </li>
             <li className="nav-item">
               <NavLink
                 className="nav-link"
-                to="/contact"
+                to="/courses"
                 data-bs-dismiss="offcanvas"
-                onClick={handleContactPage}
+                onClick={handleUpdatePage}
               >
-                Contact
+                update
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink
+                className="nav-link"
+                to="/about"
+                data-bs-dismiss="offcanvas"
+                onClick={handleDashboardPage}
+              >
+                dashboard
               </NavLink>
             </li>
           </ul>
