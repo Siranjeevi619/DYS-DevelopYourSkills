@@ -9,11 +9,14 @@ function Courses() {
   useEffect(() => {
     const fetchCourses = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/course/");
-        setCourseData(response.data.data);
-        // console.log(response.data.data);
-        // console.log(response.data.data[0].courseTutorIcon);
-        console.log(courseData);
+        const response = await axios.get("http://localhost:6969/course");
+        setCourseData(response.data.courseList);
+        console.log("Fetched course data:", response.data.courseList);
+
+        // Log each course's thumbnail
+        response.data.courseList.forEach((course) => {
+          console.log("Course Thumbnail:", course.courseThumbnail);
+        });
       } catch (error) {
         console.error("Error fetching course list:", error.message);
       }
@@ -22,9 +25,18 @@ function Courses() {
     fetchCourses();
   }, []);
 
-  // console.log(courseData.courseThumbnail);
+  // Log courseData after it updates
+  useEffect(() => {
+    if (courseData.length > 0) {
+      console.log("Updated courseData:", courseData);
+      courseData.forEach((course) => {
+        console.log("Course Thumbnail:", course.courseThumbnail);
+      });
+    }
+  }, [courseData]);
+
   const handleEditCourse = () => {
-    navigate('/updatecourse')
+    navigate("/updatecourse");
   };
 
   return (
@@ -40,11 +52,12 @@ function Courses() {
                 <div className="d-flex justify-content-center align-items-center">
                   <div className="card shadow course-card">
                     <img
-                      src={course.courseThumbnail}
+                      src={`http://localhost:6969${course.courseThumbnail}`}
                       className="card-img-top course-card-img h-auto"
-                      alt="Course Thumbnail"
+                      alt={course.courseThumbnail}
                     />
                     <div className="card-body">
+                      <div>{course.courseThumbnail}</div>
                       <h5 className="card-title">{course.courseName}</h5>
                       <p className="">{course.courseUniqueId}</p>
                       <p>

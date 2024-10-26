@@ -166,7 +166,7 @@ function AddCourse() {
 
     try {
       const response = await axios.post(
-        "http://localhost:8080/course/add",
+        "http://localhost:6969/add",
         data,
         {
           headers: {
