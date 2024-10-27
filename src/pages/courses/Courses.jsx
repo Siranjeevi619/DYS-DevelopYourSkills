@@ -9,8 +9,8 @@ function Courses() {
   useEffect(() => {
     const fetchCourses = async () => {
       try {
-        const response = await axios.get("http://localhost:6969/course");
-        setCourseData(response.data.courseList);
+        const response = await axios.get("http://localhost:6969/course/list");
+        setCourseData(response.data.data);
         console.log("Fetched course data:", response.data.courseList);
 
         // Log each course's thumbnail

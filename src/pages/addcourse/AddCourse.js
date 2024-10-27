@@ -160,13 +160,26 @@ function AddCourse() {
     };
 
     // Append course data as JSON string
-    data.append("course", JSON.stringify(courseData));
-    data.append("tutorIcon", courseTutorIcon);
+    // spring boot config
+    // data.append("course", JSON.stringify(courseData));
+    // data.append("tutorIcon", courseTutorIcon);
+    // data.append("courseThumbnail", courseThumbnail);
+    data.append("courseName", courseName);
+    data.append("courseDescription", courseDescription);
+    data.append("tutorName", courseTutor);
+    data.append("courseLanguage", courseLanguage);
+    data.append("courseDuration", courseDuration);
+    data.append("courseTutorIcon", courseTutorIcon);
     data.append("courseThumbnail", courseThumbnail);
-
+    data.append("courseTags", JSON.stringify(tags)); 
+    data.append("courseCertification", JSON.stringify(certification)); 
+    data.append("courseDocuments", JSON.stringify(documents)); 
+    data.append("courseOutcomes", JSON.stringify(outcomes));
+    data.append("courseTitle", JSON.stringify(videoTitle));
+    data.append("courseLink", JSON.stringify(videoLink));
     try {
       const response = await axios.post(
-        "http://localhost:6969/add",
+        "http://localhost:6969/course/add",
         data,
         {
           headers: {
@@ -181,6 +194,7 @@ function AddCourse() {
         setCourseTutor("");
         setCourseLanguage("");
         setCourseDuration("");
+        
         setCourseTutorIcon(null);
         setCourseThumbnail(null);
         setVideoTitle([]);

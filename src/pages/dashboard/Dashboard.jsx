@@ -7,7 +7,7 @@ function Dashboard() {
   useEffect(() => {
     const fetchCourses = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/course/");
+        const response = await axios.get("http://localhost:6969/course/list");
         setCourseData(response.data.data);
       } catch (e) {
         console.error(e.message);
