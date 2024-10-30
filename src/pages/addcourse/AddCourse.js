@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Chip, TextField, Button } from "@mui/material";
 import axios from "axios";
+import Swal from "sweetalert2";
 // import { configure } from "@testing-library/react";
 
 function AddCourse() {
@@ -171,9 +172,9 @@ function AddCourse() {
     data.append("courseDuration", courseDuration);
     data.append("courseTutorIcon", courseTutorIcon);
     data.append("courseThumbnail", courseThumbnail);
-    data.append("courseTags", JSON.stringify(tags)); 
-    data.append("courseCertification", JSON.stringify(certification)); 
-    data.append("courseDocuments", JSON.stringify(documents)); 
+    data.append("courseTags", JSON.stringify(tags));
+    data.append("courseCertification", JSON.stringify(certification));
+    data.append("courseDocuments", JSON.stringify(documents));
     data.append("courseOutcomes", JSON.stringify(outcomes));
     data.append("courseTitle", JSON.stringify(videoTitle));
     data.append("courseLink", JSON.stringify(videoLink));
@@ -194,7 +195,7 @@ function AddCourse() {
         setCourseTutor("");
         setCourseLanguage("");
         setCourseDuration("");
-        
+
         setCourseTutorIcon(null);
         setCourseThumbnail(null);
         setVideoTitle([]);
@@ -203,11 +204,26 @@ function AddCourse() {
         setCertification([]);
         setDocuments([]);
         setOutcomes([]);
+        Swal.fire({
+          title: "Good Job",
+          text: "course created successfully",
+          icon: "success",
+        });
       } else {
+        Swal.fire({
+          title: "error ",
+          text: "error in submisson",
+          icon: "error",
+        });
         console.log("error in submitting");
       }
     } catch (error) {
       console.error("Error:", error.message);
+      Swal.fire({
+        title: "error ",
+        text: "error in creating course",
+        icon: "error",
+      });
     }
   };
 

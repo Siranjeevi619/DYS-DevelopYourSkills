@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Chip, TextField, Button } from "@mui/material";
 import axios from "axios";
+import Swal from "sweetalert2";
 // import { configure } from "@testing-library/react";
 
 function UpdateCourse() {
@@ -142,49 +143,69 @@ function UpdateCourse() {
     setVideoLink(videoLink.filter((link) => link !== linkToDelete));
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const data = new FormData();
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  const data = new FormData();
 
-    const courseData = {
-      courseUniqueId,
-      courseName,
-      courseDescription,
-      tutorName: courseTutor,
-      courseLanguage,
-      courseDuration,
-      tags,
-      certifications: certification,
-      documents,
-      outcomes,
-      videoTitle,
-      videoLink,
-    };
+  data.append("courseName", courseName);
+  data.append("courseDescription", courseDescription);
+  data.append("tutorName", courseTutor);
+  data.append("courseLanguage", courseLanguage);
+  data.append("courseDuration", courseDuration);
+  data.append("courseTutorIcon", courseTutorIcon); 
+  data.append("courseThumbnail", courseThumbnail);
+  data.append("courseTags", JSON.stringify(tags));
+  data.append("courseCertification", JSON.stringify(certification));
+  data.append("courseDocuments", JSON.stringify(documents));
+  data.append("courseOutcomes", JSON.stringify(outcomes));
+  data.append("courseTitle", JSON.stringify(videoTitle));
+  data.append("courseLink", JSON.stringify(videoLink));
 
-    // Append course data as JSON string
-    data.append("course", JSON.stringify(courseData));
-    data.append("tutorIcon", courseTutorIcon);
-    data.append("courseThumbnail", courseThumbnail);
-
-    try {
-      const response = await axios.put(
-        `http://localhost:8080/course/${courseUniqueId}`,
-        data,
-        {
-          //   headers: {
-          //     "Content-Type": "multipart/form-data",
-          //   },
-        }
-      );
-      if (response.status === 200) {
-        console.log("data submitted successfully");
-      } else {
-        console.log("error in submitting");
+  try {
+    const response = await axios.put(
+      `http://localhost:6969/course/update/${courseUniqueId}`,
+      data,
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
       }
-    } catch (error) {
-      console.error("Error:", error.message);
+    );
+
+    if (response.status === 200 || response.status === 201) {
+      console.log("Data submitted successfully");
+      setCourseName("");
+      setCourseDescription("");
+      setCourseTutor("");
+      setCourseLanguage("");
+      setCourseDuration("");
+      setCourseTutorIcon(null);
+      setCourseThumbnail(null);
+      setVideoTitle([]);
+      setVideoLink([]);
+      setTags([]);
+      setCertification([]);
+      setDocuments([]);
+      setOutcomes([]);
+
+      Swal.fire({
+        title: "Good Job",
+        text: "Course updated successfully",
+        icon: "success",
+      });
+    } else {
+      console.log("Error in submitting data");
     }
-  };
+  } catch (error) {
+    console.error("Error:", error.message);
+    Swal.fire({
+      title: "Submission Failed",
+      text: "There was an error updating the course.",
+      icon: "error",
+    });
+  }
+};
+
 
   return (
     <div className="container my-5 my-md-3">
@@ -430,7 +451,7 @@ function UpdateCourse() {
               color="primary"
               className="my-3"
             >
-              Add Course
+              update course
             </Button>
           </div>
         </div>

@@ -6,6 +6,8 @@ import Courses from "../pages/courses/Courses";
 import Dashboard from "../pages/dashboard/Dashboard";
 import Navbar from "../components/Navbar";
 import UpdateCourse from "../pages/updateCourse/UpdateCourse";
+import SignupForm from "../components/SignUpForm";
+import LoginForm from "../components/LoginForm";
 
 function AppRouter() {
   return (
@@ -17,6 +19,8 @@ function AppRouter() {
         <Route path="/courses" element={<Courses />}></Route>
         <Route path="/dashboard" element={<Dashboard />}></Route>
         <Route path="/updatecourse" element={<UpdateCourse />}></Route>
+        <Route path="/signup" element={<SignupForm />} />
+        <Route path="/login" element={<LoginForm />} />
       </Routes>
     </div>
   );

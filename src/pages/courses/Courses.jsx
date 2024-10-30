@@ -10,11 +10,10 @@ function Courses() {
     const fetchCourses = async () => {
       try {
         const response = await axios.get("http://localhost:6969/course/list");
-        setCourseData(response.data.data);
-        console.log("Fetched course data:", response.data.courseList);
+        setCourseData(response.data.courses);
+        console.log("Fetched course data:", response.data.courses);
 
-        // Log each course's thumbnail
-        response.data.courseList.forEach((course) => {
+        response.data.courses.forEach((course) => {
           console.log("Course Thumbnail:", course.courseThumbnail);
         });
       } catch (error) {
