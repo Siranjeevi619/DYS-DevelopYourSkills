@@ -1,0 +1,10 @@
+.undraw-img{
+    height: 400px;
+    width: 400px;
+}
+@media (max-width:425px) {
+        .undraw-img{
+        height: 200px;
+        width: 200px;
+    }
+}
