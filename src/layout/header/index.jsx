@@ -40,16 +40,15 @@ export default function Navbar() {
             <li key={item.label} className="group relative">
               <a
                 href={item.href}
-                className="inline-flex items-center gap-2 text-sm font-medium px-2 py-2 text-[#EAF4FF]"
+                className="inline-flex items-center gap-2 text-md font-medium px-2 py-2 text-[#EAF4FF]"
               >
                 <span>{item.label}</span>
               </a>
-              <span className="absolute left-0 right-0 bottom-0 h-[2px] transform scale-x-0 origin-center transition-transform duration-300 group-hover:scale-x-100 bg-[#00A2FF] rounded-sm" />
+              <span className="absolute left-0 right-0 bottom-0 translate-y-[0px] h-[2px] transform scale-x-0 origin-center transition-transform duration-300 group-hover:scale-x-100 bg-[#00A2FF] rounded-sm" />
             </li>
           ))}
         </ul>
 
-        {/* Mobile Menu */}
         <div className="md:hidden">
           <button
             aria-label="Open menu"
