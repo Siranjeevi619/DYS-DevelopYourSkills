@@ -9,9 +9,9 @@ export default function CourseVideoCard({ course }) {
           alt="Course Thumbnail"
           className="w-full h-[220px] object-cover"
         />
-        <span className="absolute bottom-2 right-2 bg-black bg-opacity-70 text-white text-xs px-2 py-[2px] rounded-md">
+        {/* <span className="absolute bottom-2 right-2 bg-black bg-opacity-70 text-white text-xs px-2 py-[2px] rounded-md">
           {course.duration}
-        </span>
+        </span> */}
       </div>
       <div className="flex items-start gap-3 p-4">
         <img
