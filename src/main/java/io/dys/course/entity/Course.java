@@ -1,4 +1,4 @@
-package entity;
+package io.dys.course.entity;
 
 
 import lombok.AllArgsConstructor;
