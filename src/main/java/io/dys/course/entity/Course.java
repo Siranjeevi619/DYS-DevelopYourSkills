@@ -21,7 +21,9 @@ public class Course {
 
 
     @Id
-    private String id;
+    private String id = generateId();
+
+
     private String title;
     private String description;
     private String author;
@@ -40,4 +42,12 @@ public class Course {
 
     @LastModifiedDate
     private LocalDateTime updateAt;
+
+
+    private static String generateId() {
+        String objectId = new org.bson.types.ObjectId().toHexString();
+        return objectId.substring(0, 8) + "-" +
+                objectId.substring(8, 16) + "-" +
+                objectId.substring(16, 24);
+    }
 }

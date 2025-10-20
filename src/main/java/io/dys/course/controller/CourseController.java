@@ -24,7 +24,7 @@ public class CourseController {
     public ResponseEntity<ResponseDTO<List<Course>>> findAllCourse(HttpServletRequest request) {
         List<Course> courses = courseService.findAllCourse();
         ResponseDTO<List<Course>> response = new ResponseDTO<>();
-        response.setApi(request.getRequestURL().toString());
+        response.setApi(request.getRequestURI());
 
         if (courses.isEmpty()) {
             response.setData(new ArrayList<>());
@@ -43,7 +43,7 @@ public class CourseController {
     @GetMapping("/{id}")
     public ResponseEntity<ResponseDTO<Course>> findCourseById(@PathVariable String id, HttpServletRequest request) {
         ResponseDTO<Course> response = new ResponseDTO<>();
-        response.setApi(request.getRequestURL().toString());
+        response.setApi(request.getRequestURI());
 
         if (id == null || id.isEmpty()) {
             response.setData(null);
@@ -70,7 +70,7 @@ public class CourseController {
     @PostMapping("/add")
     public ResponseEntity<ResponseDTO<Course>> addCourse(@RequestBody Course course, HttpServletRequest request) {
         ResponseDTO<Course> response = new ResponseDTO<>();
-        response.setApi(request.getRequestURL().toString());
+        response.setApi(request.getRequestURI());
 
         if (course == null) {
             response.setData(null);
@@ -89,7 +89,7 @@ public class CourseController {
     @PutMapping("/update-course")
     public ResponseEntity<ResponseDTO<Course>> updateCourse(@RequestParam String id, @RequestBody Course course, HttpServletRequest request) {
         ResponseDTO<Course> response = new ResponseDTO<>();
-        response.setApi(request.getRequestURL().toString());
+        response.setApi(request.getRequestURI());
 
         if (id == null || id.isEmpty() || !courseService.isAlive(id)) {
             response.setData(null);
@@ -108,7 +108,7 @@ public class CourseController {
     @DeleteMapping("/delete-course")
     public ResponseEntity<ResponseDTO<String>> deleteCourse(@RequestParam String id, HttpServletRequest request) {
         ResponseDTO<String> response = new ResponseDTO<>();
-        response.setApi(request.getRequestURL().toString());
+        response.setApi(request.getRequestURI());
 
         if (id == null || id.isEmpty() || !courseService.isAlive(id)) {
             response.setData(null);
