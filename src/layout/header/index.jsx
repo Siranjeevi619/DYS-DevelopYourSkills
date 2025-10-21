@@ -31,8 +31,8 @@ export default function Navbar() {
 
         <ul className="hidden md:flex items-center gap-8 list-none absolute left-1/2 transform -translate-x-1/2">
           {[
-            { label: "Home", href: "#" },
-            { label: "Courses", href: "#" },
+            { label: "Home", href: "/" },
+            { label: "Courses", href: "/courses" },
             { label: "Sensei", href: "#" },
             { label: "Contact", href: "#" },
             { label: "About", href: "#" },

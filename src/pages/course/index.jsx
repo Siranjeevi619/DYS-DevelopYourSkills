@@ -1,40 +1,28 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CourseCard from "../../components/card/CourseCard";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export default function CoursesPage() {
+  const baseUrl = import.meta.env.VITE_API_BASE_URL;
   const [search, setSearch] = useState("");
+  const [courses, setCourses] = useState([]);
+  const navigate = useNavigate();
 
-  const courses = [
-    {
-      id: 1,
-      title: "Mastering React with Projects",
-      tutor: "John Anderson",
-      thumbnail: "https://source.unsplash.com/400x250/?reactjs",
-      tutorLogo: "https://source.unsplash.com/100x100/?developer",
-    },
-    {
-      id: 2,
-      title: "Spring Boot & MongoDB Crash Course",
-      tutor: "Sarah Johnson",
-      thumbnail: "https://source.unsplash.com/400x250/?springboot",
-      tutorLogo: "https://source.unsplash.com/100x100/?woman",
-    },
-    {
-      id: 3,
-      title: "Data Structures & Algorithms in Java",
-      tutor: "Alex Carter",
-      thumbnail: "https://source.unsplash.com/400x250/?java",
-      tutorLogo: "https://source.unsplash.com/100x100/?teacher",
-    },
-    {
-      id: 4,
-      title: "Full Stack Web Development Bootcamp",
-      tutor: "Emily Davis",
-      thumbnail: "https://source.unsplash.com/400x250/?coding",
-      tutorLogo: "https://source.unsplash.com/100x100/?tech",
-    },
-  ];
-
+  useEffect(() => {
+    const fetchCourses = async () => {
+      await axios
+        .get(`${baseUrl}/api/course/all-course`)
+        .then((res) => {
+          setCourses(res.data.data);
+          console.log(res.data.data);
+        })
+        .catch((e) => {
+          console.error(e);
+        });
+    };
+    fetchCourses();
+  }, []);
   const filteredCourses = courses.filter((course) =>
     course.title.toLowerCase().includes(search.toLowerCase())
   );
@@ -61,11 +49,16 @@ export default function CoursesPage() {
         />
       </div>
 
-      {/* Course List */}
       <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-14 justify-items-center">
         {filteredCourses.length > 0 ? (
           filteredCourses.map((course) => (
-            <CourseCard key={course.id} course={course} />
+            <CourseCard
+              key={course.id}
+              course={course}
+              onClick={() =>
+                navigate(`/course/${course.id}`, { state: { course } })
+              }
+            />
           ))
         ) : (
           <p className="text-center text-gray-400 text-sm col-span-full">

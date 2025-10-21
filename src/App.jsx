@@ -6,12 +6,14 @@ import CourseraNavbar from "./layout/header";
 import LmsLandingPage from "./pages/home";
 import Footer from "./layout/footer";
 import CourseLandingPage from "./pages/course";
+import AppNavigation from "./routes";
 function App() {
   return (
     <>
       <CourseraNavbar />
       {/* <LmsLandingPage /> */}
-      <CourseLandingPage />
+      <AppNavigation />
+      {/* <CourseLandingPage /> */}
       <Footer />
     </>
   );

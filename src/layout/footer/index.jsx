@@ -24,10 +24,8 @@ export default function Footer() {
           <p>Address: 42, Knowledge Park, Chennai, India</p>
         </div>
 
-        {/* Divider */}
         <div className="hidden md:block h-16 w-[1px] bg-[#00A2FF]/30" />
 
-        {/* Copyright */}
         <div className="text-center md:text-right text-sm text-[#9FB8D9]">
           <p>
             © {new Date().getFullYear()}{" "}
