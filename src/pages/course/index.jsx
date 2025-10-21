@@ -13,14 +13,12 @@ export default function CoursesPage() {
 
   useEffect(() => {
     const fetchCourses = async () => {
-      await axios
-        .get(`${baseUrl}/api/course/all-course`)
-        .then((res) => {
-          setCourses(res.data.data);
-        })
-        .catch((e) => {
-          console.error(e);
-        });
+      try {
+        const res = await axios.get(`${baseUrl}/api/course/all-course`);
+        setCourses(res.data.data);
+      } catch (error) {
+        console.error(error);
+      }
     };
     fetchCourses();
   }, []);
@@ -32,36 +30,38 @@ export default function CoursesPage() {
   const isDark = theme === "dark";
   const bgMain = isDark ? "bg-[#0D1117]" : "bg-[#F8FAFC]";
   const textPrimary = isDark ? "text-white" : "text-gray-900";
-  const textSecondary = isDark ? "text-gray-400" : "text-gray-500";
+  const textSecondary = isDark ? "text-gray-400" : "text-gray-600";
   const inputBg = isDark
-    ? "bg-[#161B22] border-[#1E293B] text-white placeholder-gray-400"
-    : "bg-white border-gray-200 text-gray-900 placeholder-gray-400";
+    ? "bg-[#161B22] border-[#30363d] text-white placeholder-gray-500"
+    : "bg-white border border-gray-300 text-gray-900 placeholder-gray-400";
 
   return (
-    <div className={`${bgMain} ${textPrimary} min-h-screen px-8 py-14`}>
-      <div className="text-center mb-12">
+    <div
+      className={`${bgMain} ${textPrimary} min-h-screen px-6 sm:px-12 py-14`}
+    >
+      <div className="max-w-4xl mx-auto text-center mb-16">
         <h1
-          className={`text-3xl font-semibold mb-3 tracking-wide ${textPrimary}`}
+          className={`text-4xl font-semibold mb-2 tracking-tight ${textPrimary}`}
         >
           Explore Our Courses
         </h1>
-        <p className={`text-sm ${textSecondary}`}>
+        <p className={`text-lg ${textSecondary}`}>
           Learn, build, and grow your skills with{" "}
-          <span className="text-[#00A2FF] font-medium">DYS</span>.
+          <span className="text-[#00A2FF] font-semibold">DYS</span>.
         </p>
       </div>
 
-      <div className="max-w-3xl mx-auto mb-14">
+      <div className="max-w-xl mx-auto mb-16">
         <input
           type="text"
           placeholder="Search courses..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className={`w-full px-5 py-3 rounded-xl border focus:outline-none focus:ring-2 focus:ring-[#00A2FF] shadow-lg ${inputBg}`}
+          className={`w-full px-5 py-3 rounded-full border focus:outline-none focus:ring-2 focus:ring-[#00A2FF] shadow-md transition ${inputBg}`}
         />
       </div>
 
-      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-14 justify-items-center">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 justify-items-center">
         {filteredCourses.length > 0 ? (
           filteredCourses.map((course) => (
             <CourseCard
