@@ -1,131 +1,132 @@
-import React, { useState, useEffect } from "react";
-import CourseVideoCard from "../../components/card/CourseCard";
-import { useTheme } from "../../context/ThemeContext";
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import { PlayCircle, Users, BookOpen, ArrowRight, Earth } from "lucide-react";
 import Button from "../../components/button/Button";
-import { EarthIcon } from "lucide-react";
+import landingImage from "../../assets/images/landingimg1.svg";
 
 export default function LmsLandingPage() {
-  const { theme } = useTheme();
+  const navigate = useNavigate();
 
-  const courses = [
-    {
-      title: "Full Stack Development",
-      tutor: "John Doe • CourseTutor",
-      thumbnail:
-        "https://images.unsplash.com/photo-1584697964190-7b3cbb74fbc3?auto=format&fit=crop&w=800&q=80",
-      tutorLogo: "https://avatars.githubusercontent.com/u/9919?s=200&v=4",
-      duration: "12:45",
-    },
-    {
-      title: "Data Structures & Algorithms",
-      tutor: "Jane Smith • CourseTutor",
-      thumbnail:
-        "https://images.unsplash.com/photo-1612832021393-16b5a2c1094b?auto=format&fit=crop&w=800&q=80",
-      tutorLogo: "https://avatars.githubusercontent.com/u/583231?v=4",
-      duration: "10:30",
-    },
-    {
-      title: "Machine Learning",
-      tutor: "Alice Johnson • CourseTutor",
-      thumbnail:
-        "https://images.unsplash.com/photo-1590608897129-79e18b146c0f?auto=format&fit=crop&w=800&q=80",
-      tutorLogo: "https://avatars.githubusercontent.com/u/6752311?v=4",
-      duration: "15:20",
-    },
-    {
-      title: "Cloud Computing",
-      tutor: "Bob Lee • CourseTutor",
-      thumbnail:
-        "https://images.unsplash.com/photo-1603791440384-56cd371ee9b5?auto=format&fit=crop&w=800&q=80",
-      tutorLogo: "https://avatars.githubusercontent.com/u/9919?s=200&v=4",
-      duration: "11:50",
-    },
-  ];
-
-  const [current, setCurrent] = useState(0);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % courses.length);
-    }, 3000);
-    return () => clearInterval(timer);
-  }, [courses.length]);
+  const handleExploreCourses = () => {
+    navigate("/courses");
+  };
 
   return (
-    <div
-      className={`min-h-screen flex flex-col items-center justify-center px-6 md:px-12 transition-colors duration-300 ${
-        theme === "dark" ? "bg-[#0D1117] text-white" : "bg-white text-[#001E3A]"
-      }`}
-    >
-      <div className="max-w-7xl w-full flex flex-col md:flex-row items-center justify-between gap-12">
-        <div className="flex-1">
-          <h1
-            className={`text-4xl md:text-5xl font-bold leading-tight mb-6 ${
-              theme === "dark" ? "text-[#EAF4FF]" : "text-[#001E3A]"
-            }`}
-          >
-            Empower Your Learning Journey with{" "}
-            <span className="text-[#00A2FF]">Open Source</span> LMS
+    <div className="min-h-screen bg-[#f9fafb] dark:bg-[#0b0f19] text-[#1e293b] dark:text-white transition-colors duration-300">
+      <section className="flex flex-col md:flex-row items-center justify-between px-6 md:px-20 py-16 md:py-24">
+        <div className="max-w-xl space-y-6 text-center md:text-left">
+          <h1 className="text-4xl md:text-6xl font-extrabold leading-tight tracking-tight">
+            Learn. Grow. <span className="text-[#2563eb]">Succeed.</span>
           </h1>
-          <div className="text-justify">
-            <p
-              className={`text-lg leading-relaxed mb-6 ${
-                theme === "dark" ? "text-[#D1D5DB]" : "text-gray-700"
-              }`}
-            >
-              Unlock limitless learning through our{" "}
-              <span className="text-[#00A2FF] font-medium">
-                curved learning path
-              </span>
-              , guiding you from fundamentals to mastery. Built as an{" "}
-              <span className="text-[#00A2FF] font-medium">
-                open source platform
-              </span>
-              , our LMS empowers developers, educators, and learners to
-              collaborate.
-            </p>
-            <p
-              className={`text-lg leading-relaxed ${
-                theme === "dark" ? "text-[#D1D5DB]" : "text-gray-700"
-              }`}
-            >
-              With seamless integration, real-time progress tracking, and
-              community-driven enhancements, you’re part of a growing ecosystem
-              built for lifelong learning.
-            </p>
-          </div>
-          <div className="my-2">
-            <Button text="Explore" icon={EarthIcon} />
+          <p className="text-[#475569] dark:text-[#cbd5e1] text-lg leading-relaxed">
+            Unlock world-class courses from industry experts. Gain in-demand
+            skills and transform your career path.
+          </p>
+          <div className="flex justify-center md:justify-start gap-4">
+            <Button
+              text="Explore Courses"
+              onClick={handleExploreCourses}
+              icon={Earth}
+            />
           </div>
         </div>
 
-        <div className="flex-1 relative w-full md:w-1/2 h-[360px] overflow-hidden">
-          {courses.map((course, index) => (
+        <div className="mt-10 md:mt-0 w-full md:w-[45%] flex justify-center w-56 h-56">
+          <img
+            src={landingImage}
+            alt="Learning Illustration"
+            className="rounded-2xl shadow-lg w-72 md:w-[90%] transition-transform duration-300 hover:scale-105"
+          />
+        </div>
+      </section>
+
+      <section className="bg-[#f1f5f9] dark:bg-[#111827] py-12 md:py-20 transition-colors">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
+          <div>
+            <Users className="w-10 h-10 mx-auto text-[#2563eb]" />
+            <h3 className="text-2xl font-semibold mt-3 text-[#1e293b] dark:text-white">
+              120K+
+            </h3>
+            <p className="text-[#475569] dark:text-[#94a3b8]">
+              Active Learners
+            </p>
+          </div>
+          <div>
+            <BookOpen className="w-10 h-10 mx-auto text-[#2563eb]" />
+            <h3 className="text-2xl font-semibold mt-3 text-[#1e293b] dark:text-white">
+              850+
+            </h3>
+            <p className="text-[#475569] dark:text-[#94a3b8]">
+              Expert-Led Courses
+            </p>
+          </div>
+          <div>
+            <PlayCircle className="w-10 h-10 mx-auto text-[#2563eb]" />
+            <h3 className="text-2xl font-semibold mt-3 text-[#1e293b] dark:text-white">
+              50+
+            </h3>
+            <p className="text-[#475569] dark:text-[#94a3b8]">
+              Skill Categories
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="px-6 md:px-20 py-16">
+        <div className="text-center mb-10">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#0f172a] dark:text-white">
+            Featured Courses
+          </h2>
+          <p className="text-[#475569] dark:text-[#94a3b8] mt-2">
+            Top-rated courses handpicked by industry professionals.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+          {[
+            {
+              title: "Full Stack Web Development",
+              tutor: "John Doe",
+              img: "https://cdn.dribbble.com/userupload/2758306/file/original-ff6f1dc7deec3e7b0359b304aa10fbb7.png?resize=1024x768",
+            },
+            {
+              title: "Data Science & Machine Learning",
+              tutor: "Jane Smith",
+              img: "https://cdn.dribbble.com/userupload/2537499/file/original-2cf49e32c2cfa7dc0dc718214af567fa.png?resize=1024x768",
+            },
+            {
+              title: "UI/UX Design Mastery",
+              tutor: "Alex Johnson",
+              img: "https://cdn.dribbble.com/userupload/3839390/file/original-45829efefbba9b5e9cf8eb4ee1d63e77.png?resize=1024x768",
+            },
+          ].map((course, index) => (
             <div
-              key={course.title}
-              className={`absolute inset-0 flex justify-center transition-all duration-700 ease-in-out ${
-                index === current
-                  ? "opacity-100 scale-100"
-                  : "opacity-0 scale-90"
-              }`}
+              key={index}
+              className="rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all bg-white dark:bg-[#1e293b] hover:-translate-y-1"
             >
-              <CourseVideoCard course={course} />
+              <img
+                src={course.img}
+                alt={course.title}
+                className="w-full h-48 object-cover"
+              />
+              <div className="p-5 space-y-3">
+                <h3 className="text-xl font-semibold text-[#0f172a] dark:text-white">
+                  {course.title}
+                </h3>
+                <p className="text-[#64748b] dark:text-[#cbd5e1] text-sm">
+                  {course.tutor}
+                </p>
+                <button className="text-[#2563eb] font-semibold flex items-center hover:underline">
+                  Learn More <ArrowRight className="w-4 h-4 ml-1" />
+                </button>
+              </div>
             </div>
           ))}
-
-          <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2">
-            {courses.map((_, i) => (
-              <span
-                key={i}
-                onClick={() => setCurrent(i)}
-                className={`w-3 h-3 rounded-full cursor-pointer transition-all ${
-                  i === current ? "bg-[#00A2FF]" : "bg-gray-500"
-                }`}
-              ></span>
-            ))}
-          </div>
         </div>
-      </div>
+      </section>
+
+
+    
     </div>
   );
 }
