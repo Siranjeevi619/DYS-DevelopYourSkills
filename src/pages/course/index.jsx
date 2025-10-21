@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 import CourseCard from "../../components/card/CourseCard";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useTheme } from "../../context/ThemeContext";
 
 export default function CoursesPage() {
+  const { theme } = useTheme();
   const baseUrl = import.meta.env.VITE_API_BASE_URL;
   const [search, setSearch] = useState("");
   const [courses, setCourses] = useState([]);
@@ -15,7 +17,6 @@ export default function CoursesPage() {
         .get(`${baseUrl}/api/course/all-course`)
         .then((res) => {
           setCourses(res.data.data);
-          console.log(res.data.data);
         })
         .catch((e) => {
           console.error(e);
@@ -23,17 +24,28 @@ export default function CoursesPage() {
     };
     fetchCourses();
   }, []);
+
   const filteredCourses = courses.filter((course) =>
     course.title.toLowerCase().includes(search.toLowerCase())
   );
 
+  const isDark = theme === "dark";
+  const bgMain = isDark ? "bg-[#0D1117]" : "bg-[#F8FAFC]";
+  const textPrimary = isDark ? "text-white" : "text-gray-900";
+  const textSecondary = isDark ? "text-gray-400" : "text-gray-500";
+  const inputBg = isDark
+    ? "bg-[#161B22] border-[#1E293B] text-white placeholder-gray-400"
+    : "bg-white border-gray-200 text-gray-900 placeholder-gray-400";
+
   return (
-    <div className="min-h-screen bg-[#001E3A] text-white px-8 py-14">
+    <div className={`${bgMain} ${textPrimary} min-h-screen px-8 py-14`}>
       <div className="text-center mb-12">
-        <h1 className="text-3xl font-semibold mb-3 tracking-wide">
+        <h1
+          className={`text-3xl font-semibold mb-3 tracking-wide ${textPrimary}`}
+        >
           Explore Our Courses
         </h1>
-        <p className="text-gray-400 text-sm">
+        <p className={`text-sm ${textSecondary}`}>
           Learn, build, and grow your skills with{" "}
           <span className="text-[#00A2FF] font-medium">DYS</span>.
         </p>
@@ -45,7 +57,7 @@ export default function CoursesPage() {
           placeholder="Search courses..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="w-full px-5 py-3 rounded-xl bg-[#0D1117] border border-[#1E293B] text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#00A2FF] shadow-lg"
+          className={`w-full px-5 py-3 rounded-xl border focus:outline-none focus:ring-2 focus:ring-[#00A2FF] shadow-lg ${inputBg}`}
         />
       </div>
 
@@ -61,7 +73,7 @@ export default function CoursesPage() {
             />
           ))
         ) : (
-          <p className="text-center text-gray-400 text-sm col-span-full">
+          <p className={`text-center text-sm col-span-full ${textSecondary}`}>
             No courses found.
           </p>
         )}
