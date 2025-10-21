@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from "react";
 import CourseVideoCard from "../../components/card/CourseCard";
+import { useTheme } from "../../context/ThemeContext";
+import Button from "../../components/button/Button";
+import { EarthIcon } from "lucide-react";
 
 export default function LmsLandingPage() {
+  const { theme } = useTheme();
+
   const courses = [
     {
       title: "Full Stack Development",
@@ -47,14 +52,26 @@ export default function LmsLandingPage() {
   }, [courses.length]);
 
   return (
-    <div className="min-h-screen bg-[#0D1117] text-white flex flex-col items-center justify-center px-6 md:px-12">
+    <div
+      className={`min-h-screen flex flex-col items-center justify-center px-6 md:px-12 transition-colors duration-300 ${
+        theme === "dark" ? "bg-[#0D1117] text-white" : "bg-white text-[#001E3A]"
+      }`}
+    >
       <div className="max-w-7xl w-full flex flex-col md:flex-row items-center justify-between gap-12">
         <div className="flex-1">
-          <h1 className="text-4xl md:text-5xl font-bold leading-tight text-[#EAF4FF] mb-6">
+          <h1
+            className={`text-4xl md:text-5xl font-bold leading-tight mb-6 ${
+              theme === "dark" ? "text-[#EAF4FF]" : "text-[#001E3A]"
+            }`}
+          >
             Empower Your Learning Journey with{" "}
             <span className="text-[#00A2FF]">Open Source</span> LMS
           </h1>
-          <p className="text-[#D1D5DB] text-lg leading-relaxed mb-6">
+          <p
+            className={`text-lg leading-relaxed mb-6 ${
+              theme === "dark" ? "text-[#D1D5DB]" : "text-gray-700"
+            }`}
+          >
             Unlock limitless learning through our{" "}
             <span className="text-[#00A2FF] font-medium">
               curved learning path
@@ -66,14 +83,18 @@ export default function LmsLandingPage() {
             , our LMS empowers developers, educators, and learners to
             collaborate.
           </p>
-          <p className="text-[#D1D5DB] text-lg leading-relaxed">
+          <p
+            className={`text-lg leading-relaxed ${
+              theme === "dark" ? "text-[#D1D5DB]" : "text-gray-700"
+            }`}
+          >
             With seamless integration, real-time progress tracking, and
             community-driven enhancements, you’re part of a growing ecosystem
             built for lifelong learning.
           </p>
-          <button className="mt-8 bg-[#00A2FF] hover:bg-[#0092E6] text-white font-medium px-6 py-3 rounded-xl shadow-md transition-all">
-            Explore Learning Paths
-          </button>
+          <div className="my-2">
+            <Button text="Explore" icon={EarthIcon} />
+          </div>
         </div>
 
         <div className="flex-1 relative w-full md:w-1/2 h-[360px] overflow-hidden">
