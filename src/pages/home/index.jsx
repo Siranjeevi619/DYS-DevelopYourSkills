@@ -67,31 +67,33 @@ export default function LmsLandingPage() {
             Empower Your Learning Journey with{" "}
             <span className="text-[#00A2FF]">Open Source</span> LMS
           </h1>
-          <p
-            className={`text-lg leading-relaxed mb-6 ${
-              theme === "dark" ? "text-[#D1D5DB]" : "text-gray-700"
-            }`}
-          >
-            Unlock limitless learning through our{" "}
-            <span className="text-[#00A2FF] font-medium">
-              curved learning path
-            </span>
-            , guiding you from fundamentals to mastery. Built as an{" "}
-            <span className="text-[#00A2FF] font-medium">
-              open source platform
-            </span>
-            , our LMS empowers developers, educators, and learners to
-            collaborate.
-          </p>
-          <p
-            className={`text-lg leading-relaxed ${
-              theme === "dark" ? "text-[#D1D5DB]" : "text-gray-700"
-            }`}
-          >
-            With seamless integration, real-time progress tracking, and
-            community-driven enhancements, you’re part of a growing ecosystem
-            built for lifelong learning.
-          </p>
+          <div className="text-justify">
+            <p
+              className={`text-lg leading-relaxed mb-6 ${
+                theme === "dark" ? "text-[#D1D5DB]" : "text-gray-700"
+              }`}
+            >
+              Unlock limitless learning through our{" "}
+              <span className="text-[#00A2FF] font-medium">
+                curved learning path
+              </span>
+              , guiding you from fundamentals to mastery. Built as an{" "}
+              <span className="text-[#00A2FF] font-medium">
+                open source platform
+              </span>
+              , our LMS empowers developers, educators, and learners to
+              collaborate.
+            </p>
+            <p
+              className={`text-lg leading-relaxed ${
+                theme === "dark" ? "text-[#D1D5DB]" : "text-gray-700"
+              }`}
+            >
+              With seamless integration, real-time progress tracking, and
+              community-driven enhancements, you’re part of a growing ecosystem
+              built for lifelong learning.
+            </p>
+          </div>
           <div className="my-2">
             <Button text="Explore" icon={EarthIcon} />
           </div>
