@@ -1,8 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import PrimaryButton from "../../components/button/Button";
-import { PlayCircle } from "lucide-react";
+import Button from "../../components/button/Button";
+import { PlayCircle, Save } from "lucide-react";
 
 export default function CourseInfoPage() {
   const { courseId } = useParams();
@@ -107,8 +107,9 @@ export default function CourseInfoPage() {
             </ul>
           </div>
 
-          <div className="flex flex-col items-start justify-start  gap-6 bg-gray-50">
-            <PrimaryButton text="Start Learning" icon={PlayCircle} />
+          <div className="flex flex-row items-start justify-start  gap-6 bg-gray-50">
+            <Button text="Start Learning" icon={PlayCircle} />
+            <Button text="Save for Later" icon={Save} variant="outline" />
           </div>
         </div>
       </div>
