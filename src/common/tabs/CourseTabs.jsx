@@ -6,7 +6,6 @@ function CourseTabs({ documents, certifications }) {
 
   return (
     <div className="mt-6 bg-white rounded-lg shadow-md">
-      {/* Tab Buttons */}
       <div className="flex border-b border-gray-200">
         <button
           onClick={() => setActiveTab("documents")}
@@ -32,7 +31,6 @@ function CourseTabs({ documents, certifications }) {
         </button>
       </div>
 
-      {/* Tab Content */}
       <div className="p-6 min-h-[100px]">
         {activeTab === "documents" ? (
           <div>
