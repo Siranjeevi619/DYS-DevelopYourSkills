@@ -9,8 +9,7 @@ function AppNavigation() {
     <Routes>
       <Route path="/" element={<LmsLandingPage />}></Route>
       <Route path="/courses" element={<CoursesPage />} />
-      <Route path="/info/:id" element={<CourseInfoPage />} />
-      {/* <Route path="/view/:id" element={<Course}/> */}
+      <Route path="/course/:courseId" element={<CourseInfoPage />} />
     </Routes>
   );
 }
