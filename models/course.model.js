@@ -17,6 +17,6 @@ const courseSchema = new mongoose.Schema(
     roadmap: [String],
   },
   { timestamps: true }
-); // creates createdAt, updatedAt automatically
+); 
 
 module.exports = mongoose.model("Course", courseSchema);

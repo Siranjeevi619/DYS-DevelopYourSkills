@@ -12,8 +12,28 @@ exports.createCourse = async (req, res) => {
 
 exports.getAllCourses = async (req, res) => {
   try {
-    const courses = await Course.find();
-    return Response.success(res, "Courses fetched successfully", courses);
+    let page = parseInt(req.query.page) || 1;
+    let limit = parseInt(req.query.limit) || 10;
+
+    const skip = (page - 1) * limit;
+
+    const courses = await Course.find()
+      .skip(skip)
+      .limit(limit)
+      .sort({ createdAt: -1 });
+
+    const total = await Course.countDocuments();
+
+    const responseData = {
+      totalItems: total,
+      totalPages: Math.ceil(total / limit),
+      currentPage: page,
+      hasNextPage: page * limit < total,
+      hasPrevPage: page > 1,
+      items: courses,
+    };
+
+    return Response.success(res, "Courses fetched successfully", responseData);
   } catch (err) {
     return Response.error(res, "Failed to fetch courses", 500, err.message);
   }
