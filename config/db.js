@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 module.exports = async () => {
   await mongoose
-    .connect(process.env.MONGO_ID)
+    .connect(process.env.MONGO_URI)
     .then(() => {
       console.log("Connected Successfully");
     })
