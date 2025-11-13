@@ -1,0 +1,27 @@
+{
+  "name": "dys-enroll",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/Siranjeevi619/DYS-DevelopYourSkills#readme",
+  "bugs": {
+    "url": "https://github.com/Siranjeevi619/DYS-DevelopYourSkills/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Siranjeevi619/DYS-DevelopYourSkills.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.19.3"
+  }
+}
