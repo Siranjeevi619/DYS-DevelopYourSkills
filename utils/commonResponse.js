@@ -15,11 +15,11 @@ class CommonResponse {
     });
   }
 
-  static error(res, message, status = 500, details = null) {
+  static error(res, message, status = 500, data = null) {
     return res.status(status).json({
       success: false,
       message,
-      error: details,
+      error: data,
     });
   }
 }

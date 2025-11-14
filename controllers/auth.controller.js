@@ -46,6 +46,25 @@ const meApi = async (req, res) => {
   }
 };
 
+const isUser = async (req, res) => {
+  const userEmail = req.user.email;
+  await User.find({ email: userEmail })
+    .then((user) => {
+      if (!user) {
+        return Response.error(res, "User Not found", 200, false);
+      }
+      return Response.success(res, "user found", true, 200);
+    })
+    .catch((error) => {
+      return Response.error(
+        res,
+        `INTERNAL SERVER ERROR:${error.message}`,
+        500,
+        null
+      );
+    });
+};
+
 const login = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -79,4 +98,5 @@ module.exports = {
   register,
   login,
   meApi,
+  isUser,
 };
