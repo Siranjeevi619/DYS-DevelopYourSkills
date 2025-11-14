@@ -2,6 +2,7 @@ const User = require("../models/auth.model");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const Response = require("../utils/commonResponse");
+const AuthDto = require("../utils/authDto");
 
 const register = async (req, res) => {
   try {
@@ -25,6 +26,26 @@ const register = async (req, res) => {
   }
 };
 
+const meApi = async (req, res) => {
+  try {
+    const userId = req.user.id;
+
+    const user = await User.findById(userId);
+
+    if (!user) {
+      return Response.error(res, "User not found", 404);
+    }
+
+    return Response.success(
+      res,
+      "User fetched successfully",
+      AuthDto.authResponse(user.id, user.name, user.email, user.role)
+    );
+  } catch (err) {
+    return Response.error(res, "Internal server error", 500, err.message);
+  }
+};
+
 const login = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -36,7 +57,7 @@ const login = async (req, res) => {
     if (!isMatch) return Response.error(res, "Invalid email or password", 400);
 
     const token = jwt.sign(
-      { id: user._id, role: user.role },
+      { id: user._id, email: user.email, role: user.role },
       process.env.JWT_SECRET,
       { expiresIn: process.env.JWT_EXPIRES }
     );
@@ -57,4 +78,5 @@ const login = async (req, res) => {
 module.exports = {
   register,
   login,
+  meApi,
 };
