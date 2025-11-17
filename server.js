@@ -9,6 +9,7 @@ app.use(morgan("dev"));
 app.use(cors());
 app.use(express.json());
 
+
 connectDB();
 
 app.use("/api/auth", authRoute);
